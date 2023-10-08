@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_dasboard"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.vnc.flashscorex.ui.dashboard.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/newsFragment"
+        android:name="com.vnc.flashscorex.ui.dashboard.news.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" />
+    <fragment
+        android:id="@+id/predictFragment"
+        android:name="com.vnc.flashscorex.ui.dashboard.peridction.PredictFragment"
+        android:label="fragment_predict"
+        tools:layout="@layout/fragment_predict" />
+    <fragment
+        android:id="@+id/favorFragment"
+        android:name="com.vnc.flashscorex.ui.dashboard.favorite.FavorFragment"
+        android:label="fragment_favor"
+        tools:layout="@layout/fragment_favor" />
+</navigation>

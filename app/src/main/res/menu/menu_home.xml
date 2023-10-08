@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentHome"
+        android:title="Trang chủ"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/favorFragment"
+        android:title="Yêu thích"
+        android:icon="@drawable/ic_heart"/>
+    <item
+        android:id="@+id/predictFragment"
+        android:title="Dự đoán"
+        android:icon="@drawable/ic_predict"/>
+
+    <item
+        android:id="@+id/newsFragment"
+        android:title="Tin tức"
+        android:icon="@drawable/ic_explore"/>
+</menu>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/_25sdp"
+    app:cardElevation="5dp"
+    app:cardBackgroundColor="@color/white"
+    android:layout_margin="@dimen/_13sdp"
+    >
+
+    <ImageView
+        android:id="@+id/image_banner"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:scaleType="centerCrop"
+         />
+</com.google.android.material.card.MaterialCardView>

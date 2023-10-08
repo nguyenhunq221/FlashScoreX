@@ -13,4 +13,11 @@ interface ApiService {
         @Query("league") id: Int,
         @Query("season") season: Int
     ): Call<StandingModel>
+
+    @GET(ApiPath.Standings)
+    fun getTopScore(
+        @Header("x-rapidapi-key") header: String,
+        @Query("league") id: Int,
+        @Query("season") season: Int
+    ): Call<StandingModel>
 }
