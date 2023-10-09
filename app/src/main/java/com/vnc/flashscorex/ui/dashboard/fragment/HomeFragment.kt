@@ -1,5 +1,6 @@
 package com.vnc.flashscorex.ui.dashboard.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,7 @@ import com.smarteist.autoimageslider.SliderView
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.BannerAdapter
 import com.vnc.flashscorex.databinding.FragmentHomeBinding
+import com.vnc.flashscorex.ui.main.LeagueActivity
 
 class HomeFragment : Fragment() {
 
@@ -40,11 +42,15 @@ class HomeFragment : Fragment() {
         bannerList.add(R.drawable.quata)
 
         var adapter = BannerAdapter(requireContext(),bannerList)
-        binding.slider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
-        binding.slider.setSliderAdapter(adapter)
-        binding.slider.scrollTimeInSec = 4
-        binding.slider.isAutoCycle = true
-        binding.slider.startAutoCycle()
+        slider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
+        slider.setSliderAdapter(adapter)
+        slider.scrollTimeInSec = 4
+        slider.isAutoCycle = true
+        slider.startAutoCycle()
+
+        PremierLeague.setOnClickListener{
+            startActivity(Intent(requireActivity(),LeagueActivity::class.java))
+        }
 
     }
 }

@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/image_banner"
-        android:layout_width="@dimen/_290sdp"
-        android:layout_height="@dimen/_150sdp"
+        android:layout_width="370dp"
+        android:layout_height="170dp"
         android:scaleType="centerCrop"
          />
 </com.google.android.material.card.MaterialCardView>
