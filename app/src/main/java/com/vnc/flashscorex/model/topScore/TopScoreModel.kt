@@ -5,8 +5,3 @@ class TopScoreModel(
     val results:Int,
     val response:List<ResponseDetail>
 )
-
-//private String get;
-//    private List<String> errors;
-//    private int results;
-//    private List<ResponseDetail> response;
