@@ -14,7 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Base.Theme.FlashScoreX"
         tools:targetApi="31">
-
+        <activity
+            android:name=".base.BaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.LeagueActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.dashboard.DashBoardActivity"
             android:exported="true">
@@ -24,7 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
