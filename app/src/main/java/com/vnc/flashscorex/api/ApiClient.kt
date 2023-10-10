@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
     private val baseUrl = Config.BASE_URL
-    fun getClient() : OkHttpClient {
+    private fun getClient() : OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
 
@@ -27,7 +27,7 @@ object ApiClient {
             .build()
     }
 
-    val api: ApiService by lazy{
+    val apiService: ApiService by lazy{
         retrofit.create(ApiService::class.java)
     }
 }

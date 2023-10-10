@@ -14,5 +14,7 @@ data class league(
     @SerializedName("flag")
     private val flag: String? = null,
     @SerializedName("season")
-    private val season: Int
+    private val season: Int,
+    @SerializedName("standings")
+    private var standings: List<List<StandingDetail>>? = null
 )

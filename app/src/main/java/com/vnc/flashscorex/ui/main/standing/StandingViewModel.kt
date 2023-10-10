@@ -1,4 +1,46 @@
 package com.vnc.flashscorex.ui.main.standing
 
-class StandingViewModel {
+import android.app.Application
+import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+import com.vnc.flashscorex.api.ApiClient
+import com.vnc.flashscorex.api.ApiService
+import com.vnc.flashscorex.constant.Config
+import com.vnc.flashscorex.constant.Constants
+import com.vnc.flashscorex.model.standing.StandingDetail
+import com.vnc.flashscorex.model.standing.StandingModel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
+class StandingViewModel(application: Application) : AndroidViewModel(application) {
+
+    var standingDetailList = MutableLiveData<List<StandingDetail>>()
+    var errorMessage = MutableLiveData<String>()
+
+    fun showStandings(id: Int, season: Int) {
+        ApiClient.apiService.getStandings(Config.key, id, season)
+            .enqueue(object : Callback<StandingModel> {
+                override fun onResponse(
+                    call: Call<StandingModel>,
+                    response: Response<StandingModel>
+                ) {
+
+                    if (response.code() == Constants.API.API_CODE_OK) {
+                        standingDetailList.postValue(
+                            response.body().response[0].
+                        )
+                    } else {
+                        errorMessage.postValue(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<StandingModel>, t: Throwable) {
+                    errorMessage.value = t.message
+
+                }
+            })
+    }
+
 }
