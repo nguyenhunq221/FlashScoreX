@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Param(
     @SerializedName("league")
-    private val idLeague:Int,
+     val idLeague:Int,
     @SerializedName("season")
-    private val season:Int
+     val season:Int
 )

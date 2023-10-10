@@ -6,10 +6,3 @@ data class Game(
     val rating:Double,
     val captain:Boolean
 )
-
-
-
-// private String number;
-//    private String position;
-//    private Double rating;
-//    private Boolean captain;

@@ -6,8 +6,3 @@ data class Status(
     @SerializedName("short")
     val trangThai:String
 )
-//"status":{
-//        "long": "Match Finished",
-//        "short": "FT",
-//        "elapsed": 90
-//        }

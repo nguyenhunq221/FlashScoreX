@@ -5,7 +5,3 @@ data class Birth(
     val place:String,
     val country:String
 )
-
-//private String date;
-//    private String place;
-//    private String country;

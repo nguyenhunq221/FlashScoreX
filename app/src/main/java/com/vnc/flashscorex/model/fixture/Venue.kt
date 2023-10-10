@@ -10,9 +10,3 @@ data class Venue(
     @SerializedName("city")
     val city:String
 )
-
-//"venue":{
-//        "id": 525,
-//        "name": "Selhurst Park",
-//        "city": "London"
-//        }

@@ -5,7 +5,3 @@ data class Team(
   val name:String,
   val logo:String
 )
-
-//    private int id;
-//    private String name;
-//    private String logo;

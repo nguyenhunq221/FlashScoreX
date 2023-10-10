@@ -8,9 +8,3 @@ data class Goal(
     @SerializedName("away")
     val awayGoal:Int
 )
-
-//goals":{
-//        "home": 0,
-//        "away": 2
-//        }
-

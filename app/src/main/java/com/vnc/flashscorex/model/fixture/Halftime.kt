@@ -8,8 +8,3 @@ data class Halftime(
     @SerializedName("away")
     private val awayGoalHt:Int
 )
-
-//"halftime":{
-//        "home": 0,
-//        "away": 1
-//        },

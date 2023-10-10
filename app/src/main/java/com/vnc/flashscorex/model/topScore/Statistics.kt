@@ -5,8 +5,3 @@ data class Statistics(
     val team: Team,
     val games:Game
 )
-
-//    private Goal goals;
-//
-//    private Team team;
-//    private  Game games;

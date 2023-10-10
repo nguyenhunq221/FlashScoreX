@@ -12,10 +12,3 @@ data class Home(
     @SerializedName("winner")
     val winner:Boolean
 )
-
-//"home":{
-//        "id": 52,
-//        "name": "Crystal Palace",
-//        "logo": "https://media-1.api-sports.io/football/teams/52.png",
-//        "winner": false
-//        }
