@@ -7,7 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vnc.flashscorex.api.ApiClient
-import com.vnc.flashscorex.api.ApiService
 import com.vnc.flashscorex.constant.Config
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.model.standing.StandingDetail
@@ -20,10 +19,13 @@ import retrofit2.Response
 class StandingViewModel(application: Application) : AndroidViewModel(application) {
 
     private val standingDetailList = MutableLiveData<List<StandingDetail>>()
-    var errorMessage = MutableLiveData<String>()
+    private val errorMessage = MutableLiveData<String>()
 
     fun getStanding():LiveData<List<StandingDetail>>{
         return standingDetailList
+    }
+    fun getStandingError():LiveData<String>{
+        return errorMessage
     }
 
     fun showStandings(id: Int, season: Int) = viewModelScope.launch{

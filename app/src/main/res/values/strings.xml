@@ -13,4 +13,6 @@
     <string name="seria_title">Seria</string>
     <string name="bundesliga_title">Bundesliga</string>
     <string name="league1_title">League 1</string>
+
+    <string name="round">Vòng %s</string>
 </resources>

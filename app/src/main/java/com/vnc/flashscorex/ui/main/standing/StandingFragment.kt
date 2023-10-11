@@ -1,20 +1,21 @@
 package com.vnc.flashscorex.ui.main.standing
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.StandingAdapter
+import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.model.standing.StandingDetail
 
 class StandingFragment : Fragment() {
-    private lateinit var binding: FragmentStandingBinding
+    private  var _binding: FragmentStandingBinding? = null
     private lateinit var viewModel: StandingViewModel
     private lateinit var adapter:StandingAdapter
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -25,25 +26,32 @@ class StandingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[StandingViewModel::class.java]
-        binding = FragmentStandingBinding.inflate(inflater, container, false)
+        _binding = FragmentStandingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.showStandings(39,2023)
+        val bundle = arguments
+        val idLeague = bundle!!.getInt(Constants.KEY.LEAGUE_ID)
+        viewModel.showStandings(idLeague,2023)
         setObserve()
     }
 
-    fun setObserve(){
+    private fun setObserve(){
         viewModel.getStanding().observe(viewLifecycleOwner){
             getStanding(it)
         }
     }
 
-    fun getStanding(mList:List<StandingDetail>){
+    private fun getStanding(mList:List<StandingDetail>){
         adapter = StandingAdapter(mList,requireActivity())
-        binding.rcvStanding.adapter = adapter
+        binding!!.rcvStanding.adapter = adapter
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

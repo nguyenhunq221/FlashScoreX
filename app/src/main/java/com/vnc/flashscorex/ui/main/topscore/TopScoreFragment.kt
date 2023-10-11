@@ -5,20 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.R
+import com.vnc.flashscorex.adapter.TopAssistAdapter
+import com.vnc.flashscorex.adapter.TopScoreAdapter
+import com.vnc.flashscorex.constant.Constants
+import com.vnc.flashscorex.databinding.FragmentTopScoreBinding
+import com.vnc.flashscorex.model.topScore.ResponseDetail
 
 class TopScoreFragment : Fragment() {
-
+    private  var _binding: FragmentTopScoreBinding?= null
+    private lateinit var topScoreViewModel: TopScoreViewModel
+    private lateinit var topScoreAdapter: TopScoreAdapter
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_top_score, container, false)
+        topScoreViewModel = ViewModelProvider(this)[TopScoreViewModel::class.java]
+        _binding = FragmentTopScoreBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val bundle = arguments
+        val idLeague = bundle!!.getInt(Constants.KEY.LEAGUE_ID)
+        topScoreViewModel.showListTopScore(idLeague,2023)
+        setObserve()
+    }
+
+    private fun setObserve(){
+        topScoreViewModel.getTopScoreList().observe(viewLifecycleOwner){
+            getTopAssist(it)
+        }
+        topScoreViewModel.getTopAssistError().observe(viewLifecycleOwner){
+            Toast.makeText(requireActivity(),it, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun getTopAssist(mList:List<ResponseDetail>){
+        topScoreAdapter = TopScoreAdapter(mList,requireActivity())
+        binding.rcvTopScore.adapter = topScoreAdapter
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

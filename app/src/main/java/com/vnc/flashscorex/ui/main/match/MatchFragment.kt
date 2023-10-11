@@ -1,13 +1,22 @@
 package com.vnc.flashscorex.ui.main.match
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.vnc.flashscorex.R
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.vnc.flashscorex.adapter.MatchAdapter
+import com.vnc.flashscorex.constant.Constants
+import com.vnc.flashscorex.databinding.FragmentMatchBinding
+import com.vnc.flashscorex.model.fixture.ResponseDetail
 
 class MatchFragment : Fragment() {
+    private  var _binding:FragmentMatchBinding? =null
+    private lateinit var matchAdapter: MatchAdapter
+    private lateinit var matchViewModel: MatchViewModel
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +26,34 @@ class MatchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_match, container, false)
+        matchViewModel = ViewModelProvider(this)[MatchViewModel::class.java]
+        _binding = FragmentMatchBinding.inflate(inflater,container,false)
+        val bundle = arguments
+        val idLeague = bundle?.getInt(Constants.KEY.LEAGUE_ID)
+        Log.e("hung", "idFragment: "+ idLeague )
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+//      matchViewModel.showMatch(idLeague,2023)
+        setObserve()
+    }
+
+    private fun setObserve(){
+        matchViewModel.getListMatch().observe(viewLifecycleOwner){
+            getStanding(it)
+        }
+    }
+
+    private fun getStanding(mList:List<ResponseDetail>){
+        matchAdapter = MatchAdapter(mList,requireActivity())
+        binding.rcvMatch.adapter = matchAdapter
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

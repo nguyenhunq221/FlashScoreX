@@ -16,7 +16,8 @@ import com.vnc.flashscorex.ui.main.LeagueActivity
 class HomeFragment : Fragment(),View.OnClickListener {
 
     private var bannerList:ArrayList<Int> = ArrayList()
-    private lateinit var binding:FragmentHomeBinding
+    private  var _binding:FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +30,7 @@ class HomeFragment : Fragment(),View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        _binding = FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -62,33 +63,43 @@ class HomeFragment : Fragment(),View.OnClickListener {
 
             R.id.PremierLeague -> {
                 val intent = Intent(requireActivity(),LeagueActivity::class.java)
-                intent.putExtra(Constants.KEY.PREMIER_LEAGUE,getString(R.string.premier_league_title))
+                intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.premier_league_title))
+                intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_PREMIER_LEAGUE)
                 startActivity(intent)
             }
 
             R.id.laliga -> {
                 val intent = Intent(requireActivity(),LeagueActivity::class.java)
-                intent.putExtra(Constants.KEY.PREMIER_LEAGUE,getString(R.string.laliga_title))
+                intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.laliga_title))
+                intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_LALIGA)
                 startActivity(intent)
             }
 
             R.id.seria -> {
                 val intent = Intent(requireActivity(),LeagueActivity::class.java)
-                intent.putExtra(Constants.KEY.PREMIER_LEAGUE,getString(R.string.seria_title))
+                intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.seria_title))
+                intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_SERIA)
                 startActivity(intent)
             }
 
             R.id.bundesliga -> {
                 val intent = Intent(requireActivity(),LeagueActivity::class.java)
-                intent.putExtra(Constants.KEY.PREMIER_LEAGUE,getString(R.string.bundesliga_title))
+                intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.bundesliga_title))
+                intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_BUNDESLIGA)
                 startActivity(intent)
             }
 
             R.id.league1 -> {
                 val intent = Intent(requireActivity(),LeagueActivity::class.java)
-                intent.putExtra(Constants.KEY.PREMIER_LEAGUE,getString(R.string.league1_title))
+                intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.league1_title))
+                intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_LEAGUE1)
                 startActivity(intent)
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
