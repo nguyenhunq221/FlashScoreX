@@ -21,7 +21,14 @@ class LeagueActivity : BaseActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
 
-        val myViewpager = ViewPagerAdapter(this)
+        val intent = intent
+        val title: String? = intent.getStringExtra(Constants.KEY.LEAGUE_TITLE)
+        binding.topAppBar.title = title
+
+        val idLeague:Int = intent.getIntExtra(Constants.KEY.LEAGUE_ID,0)
+        Log.e("hung", "id: "+ idLeague )
+
+        val myViewpager = ViewPagerAdapter(this,idLeague)
         binding.viewPager.adapter = myViewpager
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             when (position) {
@@ -34,37 +41,10 @@ class LeagueActivity : BaseActivity() {
         binding.viewPager.offscreenPageLimit = 2
 
         setUpView()
-
     }
 
     private fun setUpView() {
         with(binding) {
-            val intent = intent
-            val title: String? = intent.getStringExtra(Constants.KEY.LEAGUE_TITLE)
-            topAppBar.title = title
-
-            val idLeague:Int = intent.getIntExtra(Constants.KEY.LEAGUE_ID,0)
-            Log.e("hung", "id: "+ idLeague )
-            val bundle = Bundle()
-            bundle.putInt(Constants.KEY.LEAGUE_ID, idLeague)
-
-            val matchFragment = MatchFragment()
-            matchFragment.arguments = bundle
-            val topScoreFragment = TopScoreFragment()
-            topScoreFragment.arguments = bundle
-            val topAssistFragment = TopAssistFragment()
-            topAssistFragment.arguments = bundle
-            val standingFragment = StandingFragment()
-            standingFragment.arguments = bundle
-
-            val fragmentManager = supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.add(R.id.viewPager, matchFragment)
-            fragmentTransaction.add(R.id.viewPager, topScoreFragment)
-            fragmentTransaction.add(R.id.viewPager, topAssistFragment)
-            fragmentTransaction.add(R.id.viewPager, standingFragment)
-            fragmentTransaction.commit()
-
             topAppBar.setNavigationOnClickListener{
                 finish()
             }

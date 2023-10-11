@@ -11,7 +11,7 @@ import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.model.standing.StandingDetail
 
-class StandingFragment : Fragment() {
+class StandingFragment(var idLeague: Int) : Fragment() {
     private  var _binding: FragmentStandingBinding? = null
     private lateinit var viewModel: StandingViewModel
     private lateinit var adapter:StandingAdapter
@@ -32,8 +32,6 @@ class StandingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bundle = arguments
-        val idLeague = bundle!!.getInt(Constants.KEY.LEAGUE_ID)
         viewModel.showStandings(idLeague,2023)
         setObserve()
     }
@@ -46,7 +44,7 @@ class StandingFragment : Fragment() {
 
     private fun getStanding(mList:List<StandingDetail>){
         adapter = StandingAdapter(mList,requireActivity())
-        binding!!.rcvStanding.adapter = adapter
+        binding.rcvStanding.adapter = adapter
     }
 
     override fun onDestroy() {

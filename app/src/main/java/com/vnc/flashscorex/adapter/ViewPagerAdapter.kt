@@ -8,7 +8,7 @@ import com.vnc.flashscorex.ui.main.standing.StandingFragment
 import com.vnc.flashscorex.ui.main.topassist.TopAssistFragment
 import com.vnc.flashscorex.ui.main.topscore.TopScoreFragment
 
-class ViewPagerAdapter(fragmentActivity: FragmentActivity ): FragmentStateAdapter(fragmentActivity) {
+class ViewPagerAdapter(fragmentActivity: FragmentActivity, var idLeague:Int ): FragmentStateAdapter(fragmentActivity) {
 
     override fun getItemCount(): Int {
         return 4
@@ -16,12 +16,12 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity ): FragmentStateAdapte
 
     override fun createFragment(position: Int): Fragment {
         when (position) {
-            0 -> return MatchFragment()
-            1 -> return StandingFragment()
-            2 -> return TopScoreFragment()
-            3 -> return TopAssistFragment()
+            0 -> return MatchFragment(idLeague)
+            1 -> return StandingFragment(idLeague)
+            2 -> return TopScoreFragment(idLeague)
+            3 -> return TopAssistFragment(idLeague)
 
-            else -> return StandingFragment()
+            else -> return StandingFragment(idLeague)
         }
     }
 }

@@ -12,10 +12,11 @@ import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
 import com.vnc.flashscorex.model.fixture.ResponseDetail
 
-class MatchFragment : Fragment() {
-    private  var _binding:FragmentMatchBinding? =null
+class MatchFragment(var idLeague: Int) : Fragment() {
+    private var _binding: FragmentMatchBinding? = null
     private lateinit var matchAdapter: MatchAdapter
     private lateinit var matchViewModel: MatchViewModel
+    private val TAG = "hung"
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,28 +28,26 @@ class MatchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         matchViewModel = ViewModelProvider(this)[MatchViewModel::class.java]
-        _binding = FragmentMatchBinding.inflate(inflater,container,false)
-        val bundle = arguments
-        val idLeague = bundle?.getInt(Constants.KEY.LEAGUE_ID)
-        Log.e("hung", "idFragment: "+ idLeague )
+        _binding = FragmentMatchBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-//      matchViewModel.showMatch(idLeague,2023)
+        Log.e(TAG, "idFragment: " + idLeague)
+        matchViewModel.showMatch(idLeague, 2023)
         setObserve()
     }
 
-    private fun setObserve(){
-        matchViewModel.getListMatch().observe(viewLifecycleOwner){
+    private fun setObserve() {
+        matchViewModel.getListMatch().observe(viewLifecycleOwner) {
             getStanding(it)
         }
     }
 
-    private fun getStanding(mList:List<ResponseDetail>){
-        matchAdapter = MatchAdapter(mList,requireActivity())
+    private fun getStanding(mList: List<ResponseDetail>) {
+        matchAdapter = MatchAdapter(mList, requireActivity())
         binding.rcvMatch.adapter = matchAdapter
     }
 

@@ -14,7 +14,7 @@ import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.databinding.FragmentTopAssistBinding
 import com.vnc.flashscorex.model.topScore.ResponseDetail
 
-class TopAssistFragment : Fragment() {
+class TopAssistFragment(var idLeague: Int) : Fragment() {
     private  var _binding: FragmentTopAssistBinding? = null
     private lateinit var topAssistAdapter: TopAssistAdapter
     private lateinit var topAssistViewModel: TopAssistViewModel
@@ -35,8 +35,6 @@ class TopAssistFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bundle = arguments
-        val idLeague = bundle!!.getInt(Constants.KEY.LEAGUE_ID)
         topAssistViewModel.showListTopAssist(idLeague,2023)
         setObserve()
     }
