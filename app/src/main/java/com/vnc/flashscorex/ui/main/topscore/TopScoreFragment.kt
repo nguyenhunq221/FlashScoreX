@@ -1,6 +1,7 @@
 package com.vnc.flashscorex.ui.main.topscore
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,10 +12,12 @@ import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.TopAssistAdapter
 import com.vnc.flashscorex.adapter.TopScoreAdapter
 import com.vnc.flashscorex.constant.Constants
+import com.vnc.flashscorex.database.FavorPlayerDatabase
 import com.vnc.flashscorex.databinding.FragmentTopScoreBinding
+import com.vnc.flashscorex.model.topScore.Player
 import com.vnc.flashscorex.model.topScore.ResponseDetail
 
-class TopScoreFragment(var idLeague: Int) : Fragment() {
+class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClickListener {
     private  var _binding: FragmentTopScoreBinding?= null
     private lateinit var topScoreViewModel: TopScoreViewModel
     private lateinit var topScoreAdapter: TopScoreAdapter
@@ -49,11 +52,18 @@ class TopScoreFragment(var idLeague: Int) : Fragment() {
 
     private fun getTopScore(mList:List<ResponseDetail>){
         topScoreAdapter = TopScoreAdapter(mList,requireActivity())
+        topScoreAdapter.setClickListener(this)
         binding.rcvTopScore.adapter = topScoreAdapter
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClickLikePlayer(player: Player) {
+        FavorPlayerDatabase.getDatabase(requireActivity()).playerDao().savePlayer(player)
+        val number =    FavorPlayerDatabase.getDatabase(requireActivity()).playerDao().getFavorPlayer()
+        Log.e("hung", "room: "+ number )
     }
 }

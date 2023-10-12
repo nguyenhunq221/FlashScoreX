@@ -9,9 +9,9 @@ import com.vnc.flashscorex.model.topScore.Player
 @Dao
 interface PlayerDAO {
     @Insert
-    suspend fun savePlayer(vararg player: Player)
+    fun savePlayer( player: Player)
     @Query("SELECT * FROM `Favorite Player`")
-    suspend fun getFavorPlayer(): List<Player>
+     fun getFavorPlayer(): List<Player>
     @Delete
     suspend fun deletePlayer(player: Player)
 }
