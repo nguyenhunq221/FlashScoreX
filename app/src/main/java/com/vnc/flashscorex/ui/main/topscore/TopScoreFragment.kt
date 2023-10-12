@@ -40,14 +40,14 @@ class TopScoreFragment(var idLeague: Int) : Fragment() {
 
     private fun setObserve(){
         topScoreViewModel.getTopScoreList().observe(viewLifecycleOwner){
-            getTopAssist(it)
+            getTopScore(it)
         }
         topScoreViewModel.getTopScoreError().observe(viewLifecycleOwner){
             Toast.makeText(requireActivity(),it, Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun getTopAssist(mList:List<ResponseDetail>){
+    private fun getTopScore(mList:List<ResponseDetail>){
         topScoreAdapter = TopScoreAdapter(mList,requireActivity())
         binding.rcvTopScore.adapter = topScoreAdapter
     }

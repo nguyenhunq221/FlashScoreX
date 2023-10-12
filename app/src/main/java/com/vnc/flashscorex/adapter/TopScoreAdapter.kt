@@ -41,4 +41,8 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) : R
             .into(holder.binding.imgLogoClub)
     }
 
+    interface ItemClickListener{
+
+    }
+
 }
