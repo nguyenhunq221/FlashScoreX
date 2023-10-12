@@ -4,6 +4,7 @@ import com.vnc.flashscorex.model.fixture.FixtureModel
 import com.vnc.flashscorex.model.standing.StandingModel
 import com.vnc.flashscorex.model.topScore.TopScoreModel
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -31,10 +32,10 @@ interface ApiService {
     ): Call<TopScoreModel>
 
     @GET(ApiPath.Fixture)
-    fun getFixture(
+    suspend fun getFixture(
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
         @Query("season") season: Int,
         @Query("timezone") timezone:String
-    ): Call<FixtureModel>
+    ): Response<FixtureModel>
 }

@@ -5,10 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.adapter.MatchAdapter
-import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
 import com.vnc.flashscorex.model.fixture.ResponseDetail
 
@@ -43,6 +43,9 @@ class MatchFragment(var idLeague: Int) : Fragment() {
     private fun setObserve() {
         matchViewModel.getListMatch().observe(viewLifecycleOwner) {
             getStanding(it)
+        }
+        matchViewModel.getListMatchError().observe(viewLifecycleOwner){
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
     }
 

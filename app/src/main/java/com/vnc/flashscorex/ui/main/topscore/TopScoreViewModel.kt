@@ -1,6 +1,7 @@
 package com.vnc.flashscorex.ui.main.topscore
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,6 +11,7 @@ import com.vnc.flashscorex.constant.Config
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.model.topScore.ResponseDetail
 import com.vnc.flashscorex.model.topScore.TopScoreModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
@@ -23,7 +25,7 @@ class TopScoreViewModel(application: Application) : AndroidViewModel(application
         return listTopScore
     }
 
-    fun  getTopAssistError(): LiveData<String> {
+    fun getTopScoreError(): LiveData<String> {
         return errorMessage
     }
 

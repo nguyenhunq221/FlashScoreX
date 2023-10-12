@@ -1,16 +1,13 @@
 package com.vnc.flashscorex.ui.main.topassist
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.TopAssistAdapter
-import com.vnc.flashscorex.constant.Constants
-import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.databinding.FragmentTopAssistBinding
 import com.vnc.flashscorex.model.topScore.ResponseDetail
 
@@ -50,7 +47,7 @@ class TopAssistFragment(var idLeague: Int) : Fragment() {
 
     private fun getTopAssist(mList:List<ResponseDetail>){
         topAssistAdapter = TopAssistAdapter(mList,requireActivity())
-        binding!!.rcvTopAssist.adapter = topAssistAdapter
+        binding.rcvTopAssist.adapter = topAssistAdapter
     }
 
     override fun onDestroy() {

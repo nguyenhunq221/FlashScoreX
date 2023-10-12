@@ -42,7 +42,7 @@ class TopScoreFragment(var idLeague: Int) : Fragment() {
         topScoreViewModel.getTopScoreList().observe(viewLifecycleOwner){
             getTopAssist(it)
         }
-        topScoreViewModel.getTopAssistError().observe(viewLifecycleOwner){
+        topScoreViewModel.getTopScoreError().observe(viewLifecycleOwner){
             Toast.makeText(requireActivity(),it, Toast.LENGTH_SHORT).show()
         }
     }
