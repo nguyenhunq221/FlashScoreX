@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.vnc.flashscorex.model.topScore.Player
 
-@Database(entities = [Player::class], version = 1)
+@Database(entities = [Player::class], version = 2)
 abstract class FavorPlayerDatabase : RoomDatabase() {
     abstract fun playerDao(): PlayerDAO
 
@@ -21,6 +21,7 @@ abstract class FavorPlayerDatabase : RoomDatabase() {
                     "favorPlayer.db"
                 )
                     .fallbackToDestructiveMigration()
+                    .allowMainThreadQueries()
                     .build()
                 INSTANCE = instance
                 return instance

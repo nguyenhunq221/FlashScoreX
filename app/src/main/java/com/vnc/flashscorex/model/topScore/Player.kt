@@ -1,5 +1,6 @@
 package com.vnc.flashscorex.model.topScore
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -14,6 +15,7 @@ data class Player(
     val photo:String,
     val injured:Boolean,
     val height:String,
+    @Embedded
     val birth: Birth,
     val weight:String,
     val nationality:String

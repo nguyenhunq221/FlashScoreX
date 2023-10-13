@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.vnc.flashscorex.R
-import com.vnc.flashscorex.adapter.TopAssistAdapter
 import com.vnc.flashscorex.adapter.TopScoreAdapter
-import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.database.FavorPlayerDatabase
 import com.vnc.flashscorex.databinding.FragmentTopScoreBinding
 import com.vnc.flashscorex.model.topScore.Player
