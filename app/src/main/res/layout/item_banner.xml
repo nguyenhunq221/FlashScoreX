@@ -4,7 +4,7 @@
     android:id="@+id/cardView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="@dimen/_25sdp"
+    app:cardCornerRadius="@dimen/_15sdp"
     app:cardElevation="5dp"
     app:cardBackgroundColor="@color/white"
     android:layout_margin="@dimen/_13sdp"
@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/image_banner"
-        android:layout_width="370dp"
-        android:layout_height="170dp"
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_145sdp"
         android:scaleType="centerCrop"
          />
 </com.google.android.material.card.MaterialCardView>

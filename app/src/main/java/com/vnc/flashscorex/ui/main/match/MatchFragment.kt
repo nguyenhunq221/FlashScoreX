@@ -36,8 +36,8 @@ class MatchFragment(var idLeague: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.e(TAG, "idFragment: " + idLeague)
-        matchViewModel.showMatch(idLeague, 2023)
         setObserve()
+        matchViewModel.showMatch(idLeague, 2023)
     }
 
     private fun setObserve() {

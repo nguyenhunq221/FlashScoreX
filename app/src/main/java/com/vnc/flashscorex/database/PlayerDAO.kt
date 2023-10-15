@@ -13,7 +13,7 @@ interface PlayerDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun savePlayer( player: Player)
     @Query("SELECT * FROM `Favorite Player`")
-     fun getFavorPlayer(): List<Player>
+    suspend fun getFavorPlayer(): List<Player>
     @Delete
     suspend fun deletePlayer(player: Player)
     @Update
