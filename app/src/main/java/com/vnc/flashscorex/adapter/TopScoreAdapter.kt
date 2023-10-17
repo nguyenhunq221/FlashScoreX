@@ -40,8 +40,9 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) : R
             .load(urlImageClub)
             .centerCrop()
             .into(holder.binding.imgLogoClub)
-        holder.binding.cardView.setOnClickListener{
+        holder.binding.cardView.setOnLongClickListener{
             listener?.onClickLikePlayer(mList[position].player)
+            true
         }
     }
 

@@ -10,12 +10,16 @@ import com.vnc.flashscorex.model.topScore.Player
 
 @Dao
 interface PlayerDAO {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun savePlayer( player: Player)
     @Query("SELECT * FROM `Favorite Player`")
     suspend fun getFavorPlayer(): List<Player>
     @Delete
     suspend fun deletePlayer(player: Player)
+    @Query("DELETE FROM `Favorite Player`")
+    suspend fun deleteAllPlayer()
     @Update
     suspend fun update(player: Player)
+    @Query("SELECT * FROM `Favorite Player` WHERE id = :id")
+    suspend fun checkPlayer(id: Int): List<Player>
 }
