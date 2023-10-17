@@ -15,4 +15,10 @@
     <string name="league1_title">League 1</string>
 
     <string name="round">Vòng %s</string>
+    <string name="add_to_favor">Thêm  cầu thủ vào danh sách yêu thích</string>
+    <string name="notice">Thông báo</string>
+    <string name="accept">Đồng ý</string>
+    <string name="cancel">Hủy</string>
+    <string name="player_added">Cầu thủ này đã được lưu</string>
+    <string name="have_player_added">Đã lưu cầu thủ</string>
 </resources>

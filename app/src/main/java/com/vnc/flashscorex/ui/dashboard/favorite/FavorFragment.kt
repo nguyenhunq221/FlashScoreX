@@ -11,7 +11,7 @@ import com.vnc.flashscorex.adapter.FavoritePlayerAdapter
 import com.vnc.flashscorex.databinding.FragmentFavorBinding
 import com.vnc.flashscorex.model.topScore.Player
 
-class FavorFragment : Fragment() {
+class FavorFragment : Fragment(),FavoritePlayerAdapter.ItemClickListener {
     private var _binding: FragmentFavorBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: FavoritePlayerAdapter
@@ -37,13 +37,13 @@ class FavorFragment : Fragment() {
         favorViewModel.loadListFavorPlayer(requireActivity())
     }
 
-    fun setObserver(){
+    private fun setObserver(){
         favorViewModel.getListFavorPlayer().observe(viewLifecycleOwner){
             getFavorPlayer(it)
         }
     }
 
-    fun getFavorPlayer(mList:List<Player>){
+    private fun getFavorPlayer(mList:List<Player>){
         adapter = FavoritePlayerAdapter(mList,requireActivity())
         binding.rcvFavorPlayer.adapter = adapter
     }
@@ -51,6 +51,10 @@ class FavorFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClickLikePlayer(player: Player) {
+        TODO("Not yet implemented")
     }
 
 }

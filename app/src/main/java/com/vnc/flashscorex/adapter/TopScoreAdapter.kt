@@ -1,21 +1,26 @@
 package com.vnc.flashscorex.adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.vnc.flashscorex.R
 import com.vnc.flashscorex.databinding.ItemPlayerBinding
 import com.vnc.flashscorex.model.topScore.Player
 import com.vnc.flashscorex.model.topScore.ResponseDetail
 
-class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) : RecyclerView.Adapter<TopScoreAdapter.TopScoreViewHolder>() {
-    class TopScoreViewHolder( var binding:ItemPlayerBinding) :RecyclerView.ViewHolder(binding.root){}
-    private var listener:ItemClickListener? = null
+class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) :
+    RecyclerView.Adapter<TopScoreAdapter.TopScoreViewHolder>() {
+    class TopScoreViewHolder(var binding: ItemPlayerBinding) :
+        RecyclerView.ViewHolder(binding.root) {}
+
+    private var listener: ItemClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopScoreViewHolder {
         val binding: ItemPlayerBinding =
             ItemPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return  TopScoreViewHolder(binding)
+        return TopScoreViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -23,7 +28,7 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) : R
     }
 
     override fun onBindViewHolder(holder: TopScoreViewHolder, position: Int) {
-        val responseDetail :ResponseDetail = mList[position]
+        val responseDetail: ResponseDetail = mList[position]
         holder.binding.playerName.text = responseDetail.player.name
         holder.binding.clubName.text = responseDetail.statistics[0].team.name
         holder.binding.assist.text = responseDetail.statistics[0].goals.assists.toString()
@@ -40,17 +45,30 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) : R
             .load(urlImageClub)
             .centerCrop()
             .into(holder.binding.imgLogoClub)
-        holder.binding.cardView.setOnLongClickListener{
-            listener?.onClickLikePlayer(mList[position].player)
+        holder.binding.cardView.setOnLongClickListener {
+
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder
+                .setMessage(context.getString(R.string.add_to_favor))
+                .setTitle(context.getString(R.string.notice))
+                .setPositiveButton(context.getString(R.string.accept)) { _, _ ->
+                    listener?.onClickLikePlayer(mList[position].player)
+                    true
+                }
+                .setNegativeButton(R.string.cancel) { dialog, _ ->
+                    dialog.cancel()
+                }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
             true
         }
     }
 
-    interface ItemClickListener{
+    interface ItemClickListener {
         fun onClickLikePlayer(player: Player)
     }
 
-    fun setClickListener(itemClickListener: ItemClickListener){
+    fun setClickListener(itemClickListener: ItemClickListener) {
         this.listener = itemClickListener
     }
 

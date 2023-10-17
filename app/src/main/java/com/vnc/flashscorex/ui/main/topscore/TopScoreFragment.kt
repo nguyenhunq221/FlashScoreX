@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.TopScoreAdapter
 import com.vnc.flashscorex.database.FavorPlayerDatabase
 import com.vnc.flashscorex.databinding.FragmentTopScoreBinding
@@ -58,6 +59,11 @@ class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClick
     }
 
     override fun onClickLikePlayer(player: Player) {
-        FavorPlayerDatabase.getDatabase(requireActivity()).playerDao().savePlayer(player)
+        if ( FavorPlayerDatabase.getDatabase(requireActivity()).playerDao().checkPlayer(player.id).isEmpty()){
+            FavorPlayerDatabase.getDatabase(requireActivity()).playerDao().savePlayer(player)
+            Toast.makeText(requireActivity(),requireContext().getString(R.string.have_player_added), Toast.LENGTH_SHORT).show()
+        }else{
+            Toast.makeText(requireActivity(),requireContext().getString(R.string.player_added), Toast.LENGTH_SHORT).show()
+        }
     }
 }
