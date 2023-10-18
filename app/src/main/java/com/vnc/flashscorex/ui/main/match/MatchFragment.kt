@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.adapter.MatchAdapter
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
 import com.vnc.flashscorex.model.fixture.ResponseDetail
+import com.vnc.flashscorex.utils.GetCurrent
 
 class MatchFragment(var idLeague: Int) : Fragment() {
     private var _binding: FragmentMatchBinding? = null
@@ -37,7 +38,7 @@ class MatchFragment(var idLeague: Int) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Log.e(TAG, "idFragment: " + idLeague)
         setObserve()
-        matchViewModel.showMatch(idLeague, 2023)
+        matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())
     }
 
     private fun setObserve() {

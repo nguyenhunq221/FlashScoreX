@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="com.vnc.flashscorex.ui.dashboard.fragment.HomeFragment"
+        android:name="com.vnc.flashscorex.ui.dashboard.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment

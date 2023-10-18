@@ -13,6 +13,7 @@ import com.vnc.flashscorex.database.FavorPlayerDatabase
 import com.vnc.flashscorex.databinding.FragmentTopScoreBinding
 import com.vnc.flashscorex.model.topScore.Player
 import com.vnc.flashscorex.model.topScore.ResponseDetail
+import com.vnc.flashscorex.utils.GetCurrent
 
 class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClickListener {
     private  var _binding: FragmentTopScoreBinding?= null
@@ -34,7 +35,7 @@ class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClick
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topScoreViewModel.showListTopScore(idLeague,2023)
+        topScoreViewModel.showListTopScore(idLeague,GetCurrent.getCurrentYear())
         setObserve()
     }
 

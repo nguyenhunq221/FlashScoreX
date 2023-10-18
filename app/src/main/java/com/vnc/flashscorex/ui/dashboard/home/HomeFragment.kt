@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.dashboard.fragment
+package com.vnc.flashscorex.ui.dashboard.home
 
 import android.content.Intent
 import android.os.Bundle

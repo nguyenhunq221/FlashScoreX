@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.adapter.TopAssistAdapter
 import com.vnc.flashscorex.databinding.FragmentTopAssistBinding
 import com.vnc.flashscorex.model.topScore.ResponseDetail
+import com.vnc.flashscorex.utils.GetCurrent
 
 class TopAssistFragment(var idLeague: Int) : Fragment() {
     private  var _binding: FragmentTopAssistBinding? = null
@@ -32,7 +33,7 @@ class TopAssistFragment(var idLeague: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topAssistViewModel.showListTopAssist(idLeague,2023)
+        topAssistViewModel.showListTopAssist(idLeague, GetCurrent.getCurrentYear())
         setObserve()
     }
 

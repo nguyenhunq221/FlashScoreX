@@ -21,4 +21,9 @@
     <string name="cancel">Hủy</string>
     <string name="player_added">Cầu thủ này đã được lưu</string>
     <string name="have_player_added">Đã lưu cầu thủ</string>
+
+    <string name="delete_player">Bỏ thích cầu thủ %s</string>
+    <string name="delete_player_notice">Đã bỏ thích cầu thủ %s</string>
+    <string name="channel_name">Channel 1</string>
+    <string name="channel_description">This is channel 1</string>
 </resources>

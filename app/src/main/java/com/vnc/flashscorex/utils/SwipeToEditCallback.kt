@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.Util
+package com.vnc.flashscorex.utils
 
 import android.content.Context
 import android.graphics.Canvas

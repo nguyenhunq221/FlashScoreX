@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.Util
+package com.vnc.flashscorex.utils
 
 import android.content.Context
 import android.graphics.Canvas
@@ -16,14 +16,14 @@ abstract class SwipeToDeleteCallback internal constructor(mContext: Context) :
     ItemTouchHelper.Callback() {
     private val mClearPaint: Paint = Paint()
     private val mBackground: ColorDrawable = ColorDrawable()
-    private val backgroundColor: Int = mContext.getColor(R.color.purple_200)
+    private val backgroundColor: Int = mContext.getColor(R.color.white)
     private val deleteDrawable: Drawable?
     private val intrinsicWidth: Int
     private val intrinsicHeight: Int
 
     init {
         mClearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
-        deleteDrawable = ContextCompat.getDrawable(mContext, R.drawable.ic__star)
+        deleteDrawable = ContextCompat.getDrawable(mContext, R.drawable.ic_delete)
         intrinsicWidth = deleteDrawable!!.intrinsicWidth
         intrinsicHeight = deleteDrawable.intrinsicHeight
     }

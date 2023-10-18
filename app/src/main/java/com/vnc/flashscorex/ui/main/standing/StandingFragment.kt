@@ -11,6 +11,7 @@ import com.vnc.flashscorex.adapter.StandingAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.model.standing.StandingDetail
+import com.vnc.flashscorex.utils.GetCurrent
 
 class StandingFragment(var idLeague: Int) : Fragment() {
     private  var _binding: FragmentStandingBinding? = null
@@ -33,7 +34,7 @@ class StandingFragment(var idLeague: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.showStandings(idLeague,2023)
+        viewModel.showStandings(idLeague, GetCurrent.getCurrentYear())
         setObserve()
     }
 

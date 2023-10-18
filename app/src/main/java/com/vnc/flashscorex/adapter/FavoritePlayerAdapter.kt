@@ -26,6 +26,10 @@ class FavoritePlayerAdapter(var mList: List<Player>, var context: Context) :
         return mList.size
     }
 
+    fun getListPlayer() : List<Player>{
+        return mList
+    }
+
     override fun onBindViewHolder(holder: FavoritePlayerViewHolder, position: Int) {
         val player = mList[position]
         holder.binding.playerName.text = player.name
@@ -40,12 +44,12 @@ class FavoritePlayerAdapter(var mList: List<Player>, var context: Context) :
         holder.binding.tvNation.text = player.nationality
 
         holder.binding.cardView.setOnClickListener{
-            listener?.onClickLikePlayer(mList[position])
+            listener?.onClickDeletePlayer(mList[position])
         }
     }
 
     interface ItemClickListener {
-        fun onClickLikePlayer(player: Player)
+        fun onClickDeletePlayer(player: Player)
     }
 
     fun setClickListener(itemClickListener: ItemClickListener) {
