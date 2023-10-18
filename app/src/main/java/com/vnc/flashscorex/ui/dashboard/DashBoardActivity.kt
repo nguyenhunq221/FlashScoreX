@@ -1,29 +1,23 @@
 package com.vnc.flashscorex.ui.dashboard
 
-import android.Manifest
-import android.app.AlertDialog
+import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
-import android.content.pm.PackageManager
+import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.navigation.NavigationBarView
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.databinding.ActivityDashBoardBinding
+import java.util.Calendar
 
 class DashBoardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashBoardBinding
@@ -42,29 +36,25 @@ class DashBoardActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
 
-        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_bundesliga)
-            .setContentTitle("ascv")
-            .setContentText("Thong bao")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+        createNotificationChannel()
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(this, NoticeReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        with(NotificationManagerCompat.from(this)) {
-            if (ActivityCompat.checkSelfPermission(
-                    this@DashBoardActivity,
-                    Manifest.permission.POST_NOTIFICATIONS
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
-                return
-            }
-            notify(1, builder.build())
-        }
+        // Set the alarm to trigger at the desired time (e.g., 8:00 AM)
+        val calendar = Calendar.getInstance()
+        calendar.timeInMillis = System.currentTimeMillis()
+        calendar.set(Calendar.HOUR_OF_DAY, 7)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 25)
+
+        // Schedule the alarm to repeat every day
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
 
 //        val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
 //            override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -111,8 +101,6 @@ class DashBoardActivity : AppCompatActivity() {
 //        binding.bottomNavigation.apply {
 //            setOnItemSelectedListener(mNavigationItemSelected)
 //        }
-        createNotificationChannel()
-
     }
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
