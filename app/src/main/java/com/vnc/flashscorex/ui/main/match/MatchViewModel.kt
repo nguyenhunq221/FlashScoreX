@@ -11,6 +11,7 @@ import com.vnc.flashscorex.constant.Config
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.model.fixture.FixtureModel
 import com.vnc.flashscorex.model.fixture.ResponseDetail
+import com.vnc.flashscorex.model.round.RoundModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -21,15 +22,19 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
 
     private val listMatch = MutableLiveData<List<ResponseDetail>>()
     private val errorMessage = MutableLiveData<String>()
+    private val listRound = MutableLiveData<List<String>>()
 
     fun getListMatch(): LiveData<List<ResponseDetail>> {
         return listMatch
+    }
+    fun getListRound(): LiveData<List<String>> {
+        return listRound
     }
     fun getListMatchError(): LiveData<String> {
         return errorMessage
     }
 
-    fun showMatch(id: Int, season: Int) {
+    fun showMatch(id: Int, season: Int,round:String? = null,status:String? = null) {
 
         viewModelScope.launch {
 
@@ -60,10 +65,21 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
             //use retrofit with response type with coroutines
             Log.e("hung", "thread==: " + Thread.currentThread().name)
             try {
-                listMatch.postValue(ApiClient.apiService.getFixture(Config.key, id, season, Config.time_zone).body()!!.response)
+                listMatch.postValue(ApiClient.apiService.getFixture(Config.key, id, season, Config.time_zone,round,status).body()!!.response)
             }catch (e:Exception){
-                Log.e("hung", "exception: " + e.message.toString() )
+                errorMessage.postValue(e.message.toString())
             }
+        }
+    }
+
+    fun getRound(id:Int,season:Int){
+        viewModelScope.launch {
+            try {
+                listRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()!!.listRound)
+            }catch (e:Exception){
+                errorMessage.postValue(e.message.toString())
+            }
+
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.vnc.flashscorex.api
 
 import com.vnc.flashscorex.model.fixture.FixtureModel
+import com.vnc.flashscorex.model.round.RoundModel
 import com.vnc.flashscorex.model.standing.StandingModel
 import com.vnc.flashscorex.model.topScore.TopScoreModel
 import retrofit2.Call
@@ -36,6 +37,16 @@ interface ApiService {
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
         @Query("season") season: Int,
-        @Query("timezone") timezone:String
+        @Query("timezone") timezone: String,
+        @Query("round") round: String? = null,
+        @Query("status") status: String? = null
     ): Response<FixtureModel>
+
+    @GET(ApiPath.Round)
+    suspend fun getRound(
+        @Header("x-rapidapi-key") header: String,
+        @Query("league") id: Int,
+        @Query("season") season: Int,
+        @Query("current") current: Boolean? = null,
+    ): Response<RoundModel>
 }

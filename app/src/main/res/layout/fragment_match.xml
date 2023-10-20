@@ -5,6 +5,29 @@
     android:layout_height="match_parent"
     android:background="@color/back_ground_main">
 
+    <androidx.appcompat.widget.AppCompatSpinner
+        style="@style/SpinnerText"
+        android:id="@+id/spinner_round"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bg_spinner"
+        app:layout_constraintBottom_toTopOf="@+id/rcvMatch"/>
+
+    <ImageView
+        android:id="@+id/not_start"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:src="@drawable/ic_not_start"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rcvMatch"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvMatch"
         android:layout_width="match_parent"
@@ -15,5 +38,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_round" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,13 +1,17 @@
 package com.vnc.flashscorex.ui.main.match
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.MatchAdapter
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
 import com.vnc.flashscorex.model.fixture.ResponseDetail
@@ -39,6 +43,8 @@ class MatchFragment(var idLeague: Int) : Fragment() {
         Log.e(TAG, "idFragment: " + idLeague)
         setObserve()
         matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())
+        matchViewModel.getRound(idLeague,GetCurrent.getCurrentYear())
+        setUpView()
     }
 
     private fun setObserve() {
@@ -48,11 +54,35 @@ class MatchFragment(var idLeague: Int) : Fragment() {
         matchViewModel.getListMatchError().observe(viewLifecycleOwner){
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
+        matchViewModel.getListRound().observe(viewLifecycleOwner){
+            getRound(it)
+        }
+    }
+
+    private fun setUpView(){
+
+        binding.spinnerRound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                matchViewModel.showMatch(idLeague,GetCurrent.getCurrentYear(),parent?.getItemAtPosition(position).toString())
+            }
+
+        }
+
+        binding.notStart.setOnClickListener{
+            matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())
+        }
     }
 
     private fun getStanding(mList: List<ResponseDetail>) {
         matchAdapter = MatchAdapter(mList, requireActivity())
         binding.rcvMatch.adapter = matchAdapter
+    }
+
+    private fun getRound(listRound:List<String>){
+        binding.spinnerRound.adapter = ArrayAdapter(requireActivity(), android.R.layout.simple_list_item_1,listRound)
     }
 
     override fun onDestroy() {
