@@ -22,6 +22,7 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
 
     private val listMatch = MutableLiveData<List<ResponseDetail>>()
     private val errorMessage = MutableLiveData<String>()
+    private val errorRound = MutableLiveData<String>()
     private val listRound = MutableLiveData<List<String>>()
 
     fun getListMatch(): LiveData<List<ResponseDetail>> {
@@ -32,6 +33,9 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
     }
     fun getListMatchError(): LiveData<String> {
         return errorMessage
+    }
+    fun getListRoundError(): LiveData<String> {
+        return errorRound
     }
 
     fun showMatch(id: Int, season: Int,round:String? = null,status:String? = null) {
@@ -76,6 +80,8 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 listRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()!!.listRound)
+                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()!!.errors.access.toString())
+                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()!!.errors.requests.toString())
             }catch (e:Exception){
                 errorMessage.postValue(e.message.toString())
             }

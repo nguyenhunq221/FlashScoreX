@@ -54,25 +54,38 @@ class MatchFragment(var idLeague: Int) : Fragment() {
         matchViewModel.getListMatchError().observe(viewLifecycleOwner){
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
+
+        matchViewModel.getListRoundError().observe(viewLifecycleOwner){
+            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+        }
+
         matchViewModel.getListRound().observe(viewLifecycleOwner){
             getRound(it)
         }
     }
 
     private fun setUpView(){
-
+        var isFirstSelection = true
         binding.spinnerRound.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                matchViewModel.showMatch(idLeague,GetCurrent.getCurrentYear(),parent?.getItemAtPosition(position).toString())
+                if (isFirstSelection) {
+                    isFirstSelection = false
+                }else{
+                    matchViewModel.showMatch(idLeague,GetCurrent.getCurrentYear(),parent?.getItemAtPosition(position).toString(),null)
+                }
             }
 
         }
 
         binding.notStart.setOnClickListener{
             matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())
+        }
+
+        binding.swiperefresh.setOnRefreshListener {
+            matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,null)
         }
     }
 
