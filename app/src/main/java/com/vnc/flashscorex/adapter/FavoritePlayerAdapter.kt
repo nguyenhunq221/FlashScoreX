@@ -28,6 +28,11 @@ class FavoritePlayerAdapter(var mList: List<Player>, var context: Context) :
 
     fun getListPlayer() : List<Player>{
         return mList
+        notifyDataSetChanged()
+    }
+
+    fun clearPlayer(){
+        mList.toMutableList().clear()
     }
 
     override fun onBindViewHolder(holder: FavoritePlayerViewHolder, position: Int) {

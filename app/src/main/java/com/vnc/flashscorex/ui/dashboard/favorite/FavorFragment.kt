@@ -40,26 +40,6 @@ class FavorFragment : Fragment(), FavoritePlayerAdapter.ItemClickListener {
         super.onViewCreated(view, savedInstanceState)
         setObserver()
         favorViewModel.loadListFavorPlayer(requireActivity())
-    }
-
-    private fun setObserver() {
-        favorViewModel.getListFavorPlayer().observe(viewLifecycleOwner) {
-            getFavorPlayer(it)
-        }
-    }
-
-    private fun getFavorPlayer(mList: List<Player>) {
-        adapter = FavoritePlayerAdapter(mList, requireActivity())
-        adapter.setClickListener(this)
-        binding.rcvFavorPlayer.adapter = adapter
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
-    override fun onClickDeletePlayer(player: Player) {
 
         val swipeDelete = object : SwipeToDeleteCallback(requireActivity()) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -80,6 +60,51 @@ class FavorFragment : Fragment(), FavoritePlayerAdapter.ItemClickListener {
         }
         val swipeLeftToDelete = ItemTouchHelper(swipeDelete)
         swipeLeftToDelete.attachToRecyclerView(binding.rcvFavorPlayer)
+
+        binding.btSearch.setOnClickListener{
+            if (binding.search.text.toString().isEmpty()){
+                favorViewModel.loadListFavorPlayer(requireActivity())
+            }
+            else{
+                favorViewModel.searchPlayer(requireActivity(),binding.search.text.toString())
+            }
+        }
+    }
+
+    private fun setObserver() {
+        favorViewModel.getListFavorPlayer().observe(viewLifecycleOwner) {
+            if (it.isEmpty()){
+                adapter.clearPlayer()
+                binding.nothing.visibility = View.VISIBLE
+            }else{
+                binding.nothing.visibility = View.GONE
+                getFavorPlayer(it)
+            }
+        }
+
+        favorViewModel.getListSearchPlayer().observe(viewLifecycleOwner){
+            if (it.isEmpty()){
+                adapter.clearPlayer()
+                binding.nothing.visibility = View.VISIBLE
+            }else{
+                binding.nothing.visibility = View.GONE
+                getFavorPlayer(it)
+            }
+        }
+    }
+
+    private fun getFavorPlayer(mList: List<Player>) {
+        adapter = FavoritePlayerAdapter(mList, requireActivity())
+        adapter.setClickListener(this)
+        binding.rcvFavorPlayer.adapter = adapter
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
+    override fun onClickDeletePlayer(player: Player) {
 
     }
 

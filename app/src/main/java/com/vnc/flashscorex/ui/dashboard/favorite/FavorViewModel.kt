@@ -12,12 +12,20 @@ import kotlinx.coroutines.launch
 
 class FavorViewModel(application: Application) :AndroidViewModel(application) {
     private val listFavorPlayer = MutableLiveData<List<Player>>()
+    private val listSearchPlayer = MutableLiveData<List<Player>>()
 
     fun getListFavorPlayer():LiveData<List<Player>>{
         return listFavorPlayer
     }
+    fun getListSearchPlayer():LiveData<List<Player>>{
+        return listSearchPlayer
+    }
 
     fun loadListFavorPlayer(context:Context) = viewModelScope.launch{
        listFavorPlayer.postValue(FavorPlayerDatabase.getDatabase(context).playerDao().getFavorPlayer())
+    }
+
+    fun searchPlayer(context: Context,searchQuery:String) = viewModelScope.launch {
+        listSearchPlayer.postValue(FavorPlayerDatabase.getDatabase(context).playerDao().searchPlayer(searchQuery))
     }
 }

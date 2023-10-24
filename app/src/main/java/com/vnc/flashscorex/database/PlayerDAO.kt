@@ -22,4 +22,6 @@ interface PlayerDAO {
     suspend fun update(player: Player)
     @Query("SELECT * FROM `Favorite Player` WHERE id = :id")
      fun checkPlayer(id: Int): List<Player>
+    @Query("SELECT * FROM `Favorite Player` WHERE firstname LIKE :searchQuery OR lastname LIKE :searchQuery OR name LIKE :searchQuery")
+    fun searchPlayer(searchQuery: String): List<Player>
 }

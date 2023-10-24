@@ -8,5 +8,5 @@ data class RoundModel(
     @SerializedName("response")
     val listRound:List<String>,
     @SerializedName("errors")
-    val errors:Error
+    val errors:List<Error>
 )
