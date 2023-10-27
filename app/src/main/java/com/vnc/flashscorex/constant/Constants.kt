@@ -9,6 +9,7 @@ object Constants {
         const val ID_BUNDESLIGA = 78
         const val ID_LEAGUE1 = 61
         const val ID_LALIGA = 140
+        const val KEY_MATCH = "key match"
 
     }
     object API {

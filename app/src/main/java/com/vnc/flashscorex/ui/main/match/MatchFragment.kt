@@ -1,5 +1,6 @@
 package com.vnc.flashscorex.ui.main.match
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.MatchAdapter
+import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
 import com.vnc.flashscorex.model.fixture.ResponseDetail
 import com.vnc.flashscorex.utils.GetCurrent
@@ -97,6 +99,7 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
         }else{
             binding.progress.visibility = View.GONE
             matchAdapter = MatchAdapter(mList, requireActivity())
+            matchAdapter.setClickListener(this)
             binding.rcvMatch.adapter = matchAdapter
         }
     }
@@ -111,6 +114,8 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     }
 
     override fun onClickMatch(responseDetail: ResponseDetail) {
-
+        val intent = Intent(requireActivity(),DetailMatchActivity::class.java)
+        intent.putExtra(Constants.KEY.KEY_MATCH,responseDetail.fixture.id)
+        startActivity(intent)
     }
 }

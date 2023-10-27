@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_5sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     
@@ -15,29 +16,59 @@
         android:text="Shot on Goal"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="@dimen/_12ssp"
+        android:textSize="@dimen/_13ssp"
         android:padding="@dimen/_2sdp"
         />
 
+    <TextView
+        android:id="@+id/numberTeamA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/text_secondary"
+        android:text="0"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/seekBarTeamA"
+        app:layout_constraintTop_toTopOf="@id/seekBarTeamA"
+        app:layout_constraintBottom_toBottomOf="@id/seekBarTeamA"/>
+
     <ProgressBar
-        style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+        style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
         android:id="@+id/seekBarTeamA"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="@dimen/_30sdp"
+        app:layout_constraintStart_toEndOf="@id/numberTeamA"
         app:layout_constraintEnd_toStartOf="@+id/seekBarTeamB"
         app:layout_constraintTop_toBottomOf="@+id/statisticName"
         android:rotationX="180"
         android:rotation="180"
+        android:progressTint="@color/back_ground_progressBarA"
+        android:progressBackgroundTint="@color/white"
         android:layout_marginTop="@dimen/_2sdp"/>
     <ProgressBar
-        style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+        style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
         android:id="@+id/seekBarTeamB"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
         app:layout_constraintStart_toEndOf="@+id/seekBarTeamA"
         app:layout_constraintTop_toBottomOf="@+id/statisticName"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/numberTeamB"
+        android:progressTint="@color/back_ground_progressBarB"
+        android:progressBackgroundTint="@color/white"
         android:layout_marginTop="@dimen/_2sdp"/>
+
+    <TextView
+        android:id="@+id/numberTeamB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/text_secondary"
+        android:text="0"
+        android:padding="@dimen/_2sdp"
+        app:layout_constraintStart_toEndOf="@id/seekBarTeamB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/seekBarTeamB"
+        app:layout_constraintBottom_toBottomOf="@id/seekBarTeamB"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

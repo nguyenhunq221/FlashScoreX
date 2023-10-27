@@ -4,14 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_stadium"
     tools:context=".ui.main.match.DetailMatchActivity">
+    
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logoTeamA"
+        android:layout_width="@dimen/_55sdp"
+        android:layout_height="@dimen/_55sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginStart="@dimen/_25sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/img"
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/logoTeamB"
+        android:layout_width="@dimen/_55sdp"
+        android:layout_height="@dimen/_55sdp"
+        android:layout_marginTop="@dimen/_60sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/img"
+        />
+
+    <ImageView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:src="@drawable/ic_vs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/logoTeamA"
+        app:layout_constraintBottom_toBottomOf="@id/logoTeamA"
+        android:layout_marginTop="@dimen/_20sdp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvStatistic"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_200sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
