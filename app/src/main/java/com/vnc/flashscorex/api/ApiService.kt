@@ -3,6 +3,7 @@ package com.vnc.flashscorex.api
 import com.vnc.flashscorex.model.fixture.FixtureModel
 import com.vnc.flashscorex.model.round.RoundModel
 import com.vnc.flashscorex.model.standing.StandingModel
+import com.vnc.flashscorex.model.statistic.StatisticModel
 import com.vnc.flashscorex.model.topScore.TopScoreModel
 import retrofit2.Call
 import retrofit2.Response
@@ -49,4 +50,10 @@ interface ApiService {
         @Query("season") season: Int,
         @Query("current") current: Boolean? = null,
     ): Response<RoundModel>
+
+    @GET(ApiPath.Statistic)
+    suspend fun getStatistic(
+        @Header("x-rapidapi-key") header: String,
+        @Query("fixture") id: Int,
+    ): Response<StatisticModel>
 }

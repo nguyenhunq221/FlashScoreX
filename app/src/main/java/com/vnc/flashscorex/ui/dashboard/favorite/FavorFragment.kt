@@ -74,7 +74,6 @@ class FavorFragment : Fragment(), FavoritePlayerAdapter.ItemClickListener {
     private fun setObserver() {
         favorViewModel.getListFavorPlayer().observe(viewLifecycleOwner) {
             if (it.isEmpty()){
-                adapter.clearPlayer()
                 binding.nothing.visibility = View.VISIBLE
             }else{
                 binding.nothing.visibility = View.GONE
@@ -84,7 +83,6 @@ class FavorFragment : Fragment(), FavoritePlayerAdapter.ItemClickListener {
 
         favorViewModel.getListSearchPlayer().observe(viewLifecycleOwner){
             if (it.isEmpty()){
-                adapter.clearPlayer()
                 binding.nothing.visibility = View.VISIBLE
             }else{
                 binding.nothing.visibility = View.GONE

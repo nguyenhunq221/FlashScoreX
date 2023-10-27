@@ -12,6 +12,8 @@ import com.vnc.flashscorex.model.fixture.ResponseDetail
 
 class MatchAdapter(var mList: List<ResponseDetail>, var context: Context) :
     RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
+
+    private var listener:ItemClickListener? = null
     class MatchViewHolder(val binding: ItemMatchBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
@@ -61,5 +63,17 @@ class MatchAdapter(var mList: List<ResponseDetail>, var context: Context) :
             .load(logoAway)
             .centerCrop()
             .into(holder.binding.logoAway)
+
+        holder.binding.cardView.setOnClickListener{
+            listener?.onClickMatch(mList[position])
+        }
+    }
+
+    interface ItemClickListener{
+        fun onClickMatch(responseDetail: ResponseDetail)
+    }
+
+    fun setClickListener(itemClickListener: ItemClickListener){
+        this.listener = itemClickListener
     }
 }

@@ -80,8 +80,8 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             try {
                 listRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()!!.listRound)
-                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.errors?.get(0)?.access.toString())
-                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.errors?.get(0)?.requests.toString())
+//                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.errors?.get(0)?.access.toString())
+//                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.errors?.get(0)?.requests.toString())
             }catch (e:Exception){
                 errorMessage.postValue(e.message.toString())
             }

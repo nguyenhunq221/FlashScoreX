@@ -17,7 +17,7 @@ import com.vnc.flashscorex.databinding.FragmentMatchBinding
 import com.vnc.flashscorex.model.fixture.ResponseDetail
 import com.vnc.flashscorex.utils.GetCurrent
 
-class MatchFragment(var idLeague: Int) : Fragment() {
+class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListener {
     private var _binding: FragmentMatchBinding? = null
     private lateinit var matchAdapter: MatchAdapter
     private lateinit var matchViewModel: MatchViewModel
@@ -55,9 +55,9 @@ class MatchFragment(var idLeague: Int) : Fragment() {
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
 
-        matchViewModel.getListRoundError().observe(viewLifecycleOwner){
-            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
-        }
+//        matchViewModel.getListRoundError().observe(viewLifecycleOwner){
+//            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
+//        }
 
         matchViewModel.getListRound().observe(viewLifecycleOwner){
             getRound(it)
@@ -80,6 +80,8 @@ class MatchFragment(var idLeague: Int) : Fragment() {
 
         }
 
+
+
         binding.notStart.setOnClickListener{
             matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())
         }
@@ -90,8 +92,13 @@ class MatchFragment(var idLeague: Int) : Fragment() {
     }
 
     private fun getStanding(mList: List<ResponseDetail>) {
-        matchAdapter = MatchAdapter(mList, requireActivity())
-        binding.rcvMatch.adapter = matchAdapter
+        if(mList.isEmpty()){
+            binding.progress.visibility = View.VISIBLE
+        }else{
+            binding.progress.visibility = View.GONE
+            matchAdapter = MatchAdapter(mList, requireActivity())
+            binding.rcvMatch.adapter = matchAdapter
+        }
     }
 
     private fun getRound(listRound:List<String>){
@@ -101,5 +108,9 @@ class MatchFragment(var idLeague: Int) : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClickMatch(responseDetail: ResponseDetail) {
+
     }
 }

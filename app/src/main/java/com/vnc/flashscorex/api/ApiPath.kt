@@ -7,5 +7,6 @@ class ApiPath {
         const val Fixture = "fixtures"
         const val TopAssist = "players/topassists"
         const val Round = "fixtures/rounds"
+        const val Statistic = "fixtures/statistics"
     }
 }
