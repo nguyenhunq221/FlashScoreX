@@ -38,6 +38,8 @@ class DetailMatchAdapter(var mListTeamA:List<Statistic>,var mListTeamB:List<Stat
         }else if (statisticTeamA.value == null && statisticTeamB.value == null){
             holder.binding.seekBarTeamA.max = 0
             holder.binding.seekBarTeamB.max = 0
+            holder.binding.numberTeamA.text = "0"
+            holder.binding.numberTeamB.text = "0"
         } else if(statisticTeamA.value != null && statisticTeamB.value!= null && (statisticTeamA.value.contains("%") || statisticTeamB.value.contains("%") ) ){
             holder.binding.seekBarTeamA.max = 100
             holder.binding.seekBarTeamB.max = 100

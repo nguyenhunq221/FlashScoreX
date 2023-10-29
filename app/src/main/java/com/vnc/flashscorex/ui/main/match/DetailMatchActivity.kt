@@ -3,7 +3,10 @@ package com.vnc.flashscorex.ui.main.match
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.DetailMatchAdapter
 import com.vnc.flashscorex.constant.Constants
@@ -31,11 +34,20 @@ class DetailMatchActivity : AppCompatActivity() {
     private fun setObserve(){
         viewModel.getListStatistic().observe(this){
             getListStatistic(it[0].statistics,it[1].statistics)
+            loadLogo(it[0].team.logo,binding.logoTeamA)
+            loadLogo(it[1].team.logo,binding.logoTeamB)
         }
     }
 
     private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){
         adapter = DetailMatchAdapter(mListTeamA,mListTeamB,this)
         binding.rcvStatistic.adapter = adapter
+    }
+
+    private fun loadLogo(url:String,view: ImageView){
+        Glide.with(this)
+            .load(url)
+            .centerCrop()
+            .into(view)
     }
 }
