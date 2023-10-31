@@ -49,7 +49,7 @@ class DetailMatchAdapter(var mListTeamA:List<Statistic>,var mListTeamB:List<Stat
             holder.binding.seekBarTeamA.progress = 0
             holder.binding.seekBarTeamB.progress = 0
         }
-        if (statisticTeamA.value != null && statisticTeamB.value!= null && statisticTeamA.value.isDigitsOnly() && statisticTeamB.value.isDigitsOnly()){
+        else if (statisticTeamA.value != null && statisticTeamB.value!= null && statisticTeamA.value.isDigitsOnly() && statisticTeamB.value.isDigitsOnly()){
             holder.binding.seekBarTeamA.progress = statisticTeamA.value.toInt()
             holder.binding.seekBarTeamB.progress = statisticTeamB.value.toInt()
             holder.binding.numberTeamA.text = statisticTeamA.value
