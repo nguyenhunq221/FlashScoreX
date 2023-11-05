@@ -39,6 +39,7 @@ class LeagueActivity : BaseActivity() {
             }
         }.attach()
         binding.viewPager.offscreenPageLimit = 2
+
 // binding.tabLayout.getTabAt(0)?.setCustomView()
 // View tabOne = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
 //ImageView tabIconOne = tabOne.findViewById(R.id.tab_icon);
