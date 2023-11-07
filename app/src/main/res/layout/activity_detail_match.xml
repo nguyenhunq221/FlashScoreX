@@ -13,6 +13,19 @@
         android:background="@drawable/bg_stadium">
 
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvGoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoTeamA"
+            app:layout_constraintBottom_toTopOf="@+id/rcvStatistic"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/img"
+            android:padding="@dimen/_10sdp"/>
+
+
         <ImageView
             android:id="@+id/logoTeamA"
             android:layout_width="@dimen/_55sdp"
@@ -34,6 +47,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
+            android:id="@+id/img"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_10sdp"

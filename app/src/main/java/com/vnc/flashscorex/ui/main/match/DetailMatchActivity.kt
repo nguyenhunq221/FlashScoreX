@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.DetailMatchAdapter
+import com.vnc.flashscorex.adapter.GoalAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.ActivityDetailMatchBinding
+import com.vnc.flashscorex.model.event.GoalModel
 import com.vnc.flashscorex.model.statistic.ResponseDetail
 import com.vnc.flashscorex.model.statistic.Statistic
 
@@ -18,6 +20,7 @@ class DetailMatchActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailMatchBinding
     private lateinit var viewModel:DetailMatchViewModel
     private lateinit var adapter:DetailMatchAdapter
+    private lateinit var goalAdapter:GoalAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[DetailMatchViewModel::class.java]
@@ -39,13 +42,18 @@ class DetailMatchActivity : AppCompatActivity() {
         }
 
         viewModel.getListGoal().observe(this){
-
+            getListGoal(it)
         }
     }
 
     private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){
         adapter = DetailMatchAdapter(mListTeamA,mListTeamB,this)
         binding.rcvStatistic.adapter = adapter
+    }
+
+    private fun getListGoal(mList:List<GoalModel>?){
+        goalAdapter = GoalAdapter(this,mList)
+        binding.rcvGoal.adapter = goalAdapter
     }
 
     private fun loadLogo(url:String,view: ImageView){
