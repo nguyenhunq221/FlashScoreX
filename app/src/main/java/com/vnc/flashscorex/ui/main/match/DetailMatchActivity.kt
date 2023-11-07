@@ -37,6 +37,10 @@ class DetailMatchActivity : AppCompatActivity() {
             loadLogo(it[0].team.logo,binding.logoTeamA)
             loadLogo(it[1].team.logo,binding.logoTeamB)
         }
+
+        viewModel.getListGoal().observe(this){
+
+        }
     }
 
     private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){

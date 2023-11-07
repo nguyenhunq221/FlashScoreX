@@ -92,7 +92,7 @@ class DashBoardActivity : AppCompatActivity() {
         if (!notificationSet){
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(this, NoticeReceiver::class.java)
-            val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            val pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
             // Set the alarm to trigger at the desired time (e.g., 8:00 AM)
             val calendar = Calendar.getInstance()

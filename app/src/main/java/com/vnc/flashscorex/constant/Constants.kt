@@ -10,6 +10,7 @@ object Constants {
         const val ID_LEAGUE1 = 61
         const val ID_LALIGA = 140
         const val KEY_MATCH = "key match"
+        const val TYPE_EVENT = "Goal"
 
     }
     object API {

@@ -18,7 +18,7 @@
             android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_55sdp"
             android:layout_marginStart="@dimen/_25sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:src="@drawable/img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +27,7 @@
             android:id="@+id/logoTeamB"
             android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_55sdp"
-            android:layout_marginTop="@dimen/_60sdp"
+            android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginEnd="@dimen/_25sdp"
             android:src="@drawable/img"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +36,7 @@
         <ImageView
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:src="@drawable/ic_vs"
             app:layout_constraintBottom_toBottomOf="@id/logoTeamA"
             app:layout_constraintEnd_toEndOf="parent"

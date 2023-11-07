@@ -1,5 +1,6 @@
 package com.vnc.flashscorex.api
 
+import com.vnc.flashscorex.model.event.EventModel
 import com.vnc.flashscorex.model.fixture.FixtureModel
 import com.vnc.flashscorex.model.round.RoundModel
 import com.vnc.flashscorex.model.standing.StandingModel
@@ -48,12 +49,20 @@ interface ApiService {
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
         @Query("season") season: Int,
-        @Query("current") current: Boolean? = null,
+        @Query("current") current: Boolean? = null
     ): Response<RoundModel>
 
     @GET(ApiPath.Statistic)
     suspend fun getStatistic(
         @Header("x-rapidapi-key") header: String,
-        @Query("fixture") id: Int,
+        @Query("fixture") id: Int
     ): Response<StatisticModel>
+
+    @GET(ApiPath.Event)
+    suspend fun getEvent(
+        @Header("x-rapidapi-key") header: String,
+        @Query("fixture") id: Int,
+        @Query("type") type: String
+    ): Response<EventModel>
+
 }
