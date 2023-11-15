@@ -30,8 +30,8 @@ class DetailMatchActivity : AppCompatActivity() {
         setObserve()
         val intent = intent
         var idFixture = intent.getIntExtra(Constants.KEY.KEY_MATCH,0)
-        Log.e("hung", "idFixture: "+ idFixture )
         viewModel.getStatistic(idFixture)
+        viewModel.getGoal(idFixture)
     }
 
     private fun setObserve(){
@@ -51,7 +51,7 @@ class DetailMatchActivity : AppCompatActivity() {
         binding.rcvStatistic.adapter = adapter
     }
 
-    private fun getListGoal(mList:List<GoalModel>?){
+    private fun getListGoal(mList:List<GoalModel>){
         goalAdapter = GoalAdapter(this,mList)
         binding.rcvGoal.adapter = goalAdapter
     }
