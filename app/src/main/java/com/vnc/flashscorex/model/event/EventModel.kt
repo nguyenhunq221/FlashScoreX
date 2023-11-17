@@ -6,5 +6,5 @@ data class EventModel(
     @SerializedName("results")
     val results:Int? = null,
     @SerializedName("response")
-    val listGoal:List<GoalModel>? = null
+    val listGoal:List<GoalModel>
 )

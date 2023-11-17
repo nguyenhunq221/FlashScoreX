@@ -98,7 +98,7 @@ class DashBoardActivity : AppCompatActivity() {
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = System.currentTimeMillis()
             calendar.set(Calendar.HOUR_OF_DAY, 7)
-            calendar.set(Calendar.MINUTE,20 )
+            calendar.set(Calendar.MINUTE,33 )
             calendar.set(Calendar.SECOND, 25)
 
             // Schedule the alarm to repeat every day

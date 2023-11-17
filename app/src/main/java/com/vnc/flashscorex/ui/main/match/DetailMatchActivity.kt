@@ -21,6 +21,9 @@ class DetailMatchActivity : AppCompatActivity() {
     private lateinit var viewModel:DetailMatchViewModel
     private lateinit var adapter:DetailMatchAdapter
     private lateinit var goalAdapter:GoalAdapter
+
+    private var idTeamA:Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[DetailMatchViewModel::class.java]
@@ -39,6 +42,7 @@ class DetailMatchActivity : AppCompatActivity() {
             getListStatistic(it[0].statistics,it[1].statistics)
             loadLogo(it[0].team.logo,binding.logoTeamA)
             loadLogo(it[1].team.logo,binding.logoTeamB)
+            idTeamA = it[0].team.id
         }
 
         viewModel.getListGoal().observe(this){
@@ -52,7 +56,7 @@ class DetailMatchActivity : AppCompatActivity() {
     }
 
     private fun getListGoal(mList:List<GoalModel>){
-        goalAdapter = GoalAdapter(this,mList)
+        goalAdapter = GoalAdapter(this,mList,idTeamA)
         binding.rcvGoal.adapter = goalAdapter
     }
 

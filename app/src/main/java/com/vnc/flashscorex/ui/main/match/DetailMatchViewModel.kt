@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class DetailMatchViewModel(application: Application) : AndroidViewModel(application) {
 
     private var listStatistic = MutableLiveData<List<ResponseDetail>>()
-    private var listGoal = MutableLiveData<List<GoalModel>?>()
+    private var listGoal = MutableLiveData<List<GoalModel>>()
 
     private var errorMessage = MutableLiveData<String>()
 
@@ -24,7 +24,7 @@ class DetailMatchViewModel(application: Application) : AndroidViewModel(applicat
         return listStatistic
     }
 
-    fun getListGoal() : LiveData<List<GoalModel>?>{
+    fun getListGoal() : LiveData<List<GoalModel>>{
         return listGoal
     }
 
