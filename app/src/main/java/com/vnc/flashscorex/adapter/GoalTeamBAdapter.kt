@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vnc.flashscorex.databinding.ItemGoalBinding
 import com.vnc.flashscorex.model.event.GoalModel
 
-class GoalAdapter(var context: Context, var mList: List<GoalModel>) :
-    RecyclerView.Adapter<GoalAdapter.GoalViewHolder>() {
+class GoalTeamBAdapter(var context: Context, var mList: List<GoalModel>) :
+    RecyclerView.Adapter<GoalTeamBAdapter.GoalViewHolder>() {
     class GoalViewHolder(val binding: ItemGoalBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {

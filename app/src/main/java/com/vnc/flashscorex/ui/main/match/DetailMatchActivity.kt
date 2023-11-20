@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.DetailMatchAdapter
 import com.vnc.flashscorex.adapter.GoalAdapter
+import com.vnc.flashscorex.adapter.GoalTeamBAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.ActivityDetailMatchBinding
 import com.vnc.flashscorex.model.event.GoalModel
@@ -21,8 +22,9 @@ class DetailMatchActivity : AppCompatActivity() {
     private lateinit var viewModel:DetailMatchViewModel
     private lateinit var adapter:DetailMatchAdapter
     private lateinit var goalAdapter:GoalAdapter
-
+    private lateinit var goalBAdapter:GoalTeamBAdapter
     private var idTeamA:Int = 0
+    private var idTeamB:Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,9 @@ class DetailMatchActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
         setObserve()
+        viewModel.getListGoal().observe(this){
+            getListGoal(it)
+        }
         val intent = intent
         var idFixture = intent.getIntExtra(Constants.KEY.KEY_MATCH,0)
         viewModel.getStatistic(idFixture)
@@ -43,11 +48,9 @@ class DetailMatchActivity : AppCompatActivity() {
             loadLogo(it[0].team.logo,binding.logoTeamA)
             loadLogo(it[1].team.logo,binding.logoTeamB)
             idTeamA = it[0].team.id
+            idTeamB = it[1].team.id
         }
 
-        viewModel.getListGoal().observe(this){
-            getListGoal(it)
-        }
     }
 
     private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){
@@ -56,8 +59,21 @@ class DetailMatchActivity : AppCompatActivity() {
     }
 
     private fun getListGoal(mList:List<GoalModel>){
-        goalAdapter = GoalAdapter(this,mList,idTeamA)
+        var listGoalTeamA:MutableList<GoalModel> = mutableListOf()
+        var listGoalTeamB:MutableList<GoalModel> = mutableListOf()
+
+        for (i in mList.indices){
+            if(mList[i].team.id == idTeamA){
+                listGoalTeamA.add(mList[i])
+            }else if (mList[i].team.id == idTeamB){
+                listGoalTeamB.add(mList[i])
+            }
+        }
+
+        goalAdapter = GoalAdapter(this,listGoalTeamA)
+        goalBAdapter = GoalTeamBAdapter(this,listGoalTeamB)
         binding.rcvGoal.adapter = goalAdapter
+        binding.rcvGoalTeamB.adapter = goalBAdapter
     }
 
     private fun loadLogo(url:String,view: ImageView){
