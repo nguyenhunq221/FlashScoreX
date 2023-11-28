@@ -26,4 +26,43 @@
     <string name="delete_player_notice">Đã bỏ thích cầu thủ %s</string>
     <string name="channel_name">Channel 1</string>
     <string name="channel_description">This is channel 1</string>
+
+<!--    DetailMatch Statistic VN -->
+    <string name="shot_on_goal">Sút trúng đích</string>
+    <string name="shot_off_goal">Sút không trúng đích</string>
+    <string name="total_shoot">Tổng số lần sút</string>
+    <string name="blocked_shoot">Lần sút bị chặn</string>
+    <string name="shoot_inside_box">Sút trong vòng cấm</string>
+    <string name="shoot_outside_box">Sút ngoài vòng cấm</string>
+    <string name="fouls">Số lần phạm lỗi</string>
+    <string name="corner_kick">Phạt góc</string>
+    <string name="off_side">Việt vị</string>
+    <string name="ball_possesstion">Kiểm soát bóng</string>
+    <string name="yellow_card">Thẻ vàng</string>
+    <string name="red_card">Thẻ đỏ</string>
+    <string name="goal_keeper_save">Số lần cứu thua</string>
+    <string name="total_pass">Lượt chuyền bóng</string>
+    <string name="pass_accurate">Chuyền chính xác</string>
+    <string name="pass_percent">Tỉ lệ chuyền chính xác</string>
+    <string name="expect_goal">Bàn thắng kì vọng</string>
+
+    <!--    DetailMatch Statistic En -->
+    <string name="shot_on_goal_en">Shots on Goal</string>
+    <string name="shot_off_goal_en">Shots off Goal</string>
+    <string name="total_shoot_en">Total Shots</string>
+    <string name="blocked_shoot_en">Blocked Shots</string>
+    <string name="shoot_inside_box_en">Shots insidebox</string>
+    <string name="shoot_outside_box_en">Shots outsidebox</string>
+    <string name="fouls_en">Fouls</string>
+    <string name="corner_kick_en">Corner Kicks</string>
+    <string name="off_side_en">Offsides</string>
+    <string name="ball_possesstion_en">Ball Possession</string>
+    <string name="yellow_card_en">Yellow Cards</string>
+    <string name="red_card_en">Red Cards</string>
+    <string name="goal_keeper_save_en">Goalkeeper Saves</string>
+    <string name="total_pass_en">Total passes</string>
+    <string name="pass_accurate_en">Passes accurate</string>
+    <string name="pass_percent_en">Passes %</string>
+    <string name="expect_goal_en">expected_goals</string>
+
 </resources>

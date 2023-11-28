@@ -56,6 +56,7 @@ class DetailMatchActivity : AppCompatActivity() {
     private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){
         adapter = DetailMatchAdapter(mListTeamA,mListTeamB,this)
         binding.rcvStatistic.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     private fun getListGoal(mList:List<GoalModel>){
