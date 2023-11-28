@@ -72,7 +72,9 @@ class DetailMatchActivity : AppCompatActivity() {
         }
 
         goalAdapter = GoalAdapter(this,listGoalTeamA)
+        goalAdapter.notifyDataSetChanged()
         goalBAdapter = GoalTeamBAdapter(this,listGoalTeamB)
+        goalBAdapter.notifyDataSetChanged()
         binding.rcvGoal.adapter = goalAdapter
         binding.rcvGoalTeamB.adapter = goalBAdapter
     }
