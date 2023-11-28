@@ -14,6 +14,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.net.SocketTimeoutException
 
 class StandingViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -42,10 +43,13 @@ class StandingViewModel(application: Application) : AndroidViewModel(application
                         errorMessage.postValue(response.message())
                     }
                 }
-
                 override fun onFailure(call: Call<StandingModel>, t: Throwable) {
-                    errorMessage.value = t.message
+                    if ( t is SocketTimeoutException){
+                        errorMessage.postValue("Time Out")
+                    }else{
+                        errorMessage.value = t.message
 
+                    }
                 }
             })
     }
