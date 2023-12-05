@@ -1,9 +1,7 @@
 package com.vnc.flashscorex.ui.main.match
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.MatchAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
@@ -23,7 +20,7 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     private var _binding: FragmentMatchBinding? = null
     private lateinit var matchAdapter: MatchAdapter
     private lateinit var matchViewModel: MatchViewModel
-    private val TAG = "hung"
+    private val TAG = "MatchFragment"
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +39,6 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.e(TAG, "idFragment: " + idLeague)
         setObserve()
         matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())
         matchViewModel.getRound(idLeague,GetCurrent.getCurrentYear())
@@ -81,8 +77,6 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
             }
 
         }
-
-
 
         binding.notStart.setOnClickListener{
             matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())

@@ -4,6 +4,10 @@ import java.util.Calendar
 object GetCurrent {
     fun getCurrentYear(): Int {
         val calendar = Calendar.getInstance()
-        return calendar.get(Calendar.YEAR)
+        return if (calendar.get(Calendar.MONTH) > 7){
+            calendar.get(Calendar.YEAR)
+        }else{
+            calendar.get(Calendar.YEAR) - 1
+        }
     }
 }
