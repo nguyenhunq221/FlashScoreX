@@ -97,8 +97,8 @@ class DashBoardActivity : AppCompatActivity() {
             // Set the alarm to trigger at the desired time (e.g., 8:00 AM)
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = System.currentTimeMillis()
-            calendar.set(Calendar.HOUR_OF_DAY, 7)
-            calendar.set(Calendar.MINUTE,33 )
+            calendar.set(Calendar.HOUR_OF_DAY, 11)
+            calendar.set(Calendar.MINUTE,50 )
             calendar.set(Calendar.SECOND, 25)
 
             // Schedule the alarm to repeat every day
