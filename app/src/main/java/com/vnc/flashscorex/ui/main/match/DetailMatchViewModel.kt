@@ -12,7 +12,6 @@ import com.vnc.flashscorex.model.event.GoalModel
 import com.vnc.flashscorex.model.statistic.ResponseDetail
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
 
 
 class DetailMatchViewModel(application: Application) : AndroidViewModel(application) {

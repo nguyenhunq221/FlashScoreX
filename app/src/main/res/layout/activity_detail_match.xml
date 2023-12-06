@@ -12,30 +12,40 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_stadium">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvGoal"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_goal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/img"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logoTeamA"
-            app:layout_constraintBottom_toTopOf="@+id/rcvStatistic"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/img"
-            android:padding="@dimen/_10sdp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvGoalTeamB"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logoTeamB"
-            app:layout_constraintBottom_toTopOf="@+id/rcvStatistic"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"
-            app:layout_constraintStart_toEndOf="@+id/img"
-            android:padding="@dimen/_10sdp"/>
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvGoal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_14sdp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvGoalTeamB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_14sdp"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <ImageView
@@ -79,7 +89,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rcvGoalTeamB" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_goal" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

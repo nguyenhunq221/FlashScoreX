@@ -1,14 +1,12 @@
 package com.vnc.flashscorex.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.text.isDigitsOnly
 import androidx.recyclerview.widget.RecyclerView
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.databinding.ItemStatisticBinding
-import com.vnc.flashscorex.model.statistic.ResponseDetail
 import com.vnc.flashscorex.model.statistic.Statistic
 import kotlin.math.roundToInt
 
