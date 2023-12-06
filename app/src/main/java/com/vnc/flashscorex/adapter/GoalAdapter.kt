@@ -26,6 +26,6 @@ class GoalAdapter(var context: Context, var mList: List<GoalModel>) :
 
     override fun onBindViewHolder(holder: GoalViewHolder, position: Int) {
         val goal: GoalModel = mList[position]
-        holder.binding.txtGoal.text = goal.player.name + " - " + goal.time.minuteGoal
+        holder.binding.txtGoal.text = goal.player.name + " - " + goal.time.minuteGoal.toString()
     }
 }
