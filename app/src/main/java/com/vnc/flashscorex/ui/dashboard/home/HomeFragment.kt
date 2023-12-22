@@ -108,7 +108,6 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
 
     override fun onClickSlide(slidePosition: Int) {
         val intent = Intent(requireActivity(),LeagueActivity::class.java)
-        Log.e("hung", "slidePosition: " +  slidePosition)
         if (slidePosition == 0){
             intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.champion_league))
             intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_C1)

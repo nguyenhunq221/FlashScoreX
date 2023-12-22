@@ -25,7 +25,7 @@ class BannerAdapter(var context:Context,var images:List<Int>) : SliderViewAdapte
     override fun onBindViewHolder(viewHolder: SliderViewHolder?, position: Int) {
         viewHolder!!.binding.imageBanner.setBackgroundResource(images[position])
         viewHolder.binding.cardView.setOnClickListener{
-            listener?.onClickSlide(images[position])
+            listener?.onClickSlide(images.indexOf(images[position]))
         }
     }
 

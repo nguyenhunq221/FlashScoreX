@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -56,12 +57,10 @@
             android:id="@+id/home_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manchester United"
+            tools:text="Manchester United"
             android:textSize="@dimen/_13ssp"
             android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            card_view:layout_constraintTop_toBottomOf="@+id/logo_home"
+            android:layout_marginStart="@dimen/_8sdp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"
             />
@@ -76,7 +75,7 @@
             android:layout_marginTop="@dimen/_5sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_12ssp"
-            android:text="20-11-2023 19:00"/>
+            tools:text="20-11-2023 19:00"/>
 
         <TextView
             android:id="@+id/home_goal"
@@ -85,10 +84,10 @@
             card_view:layout_constraintTop_toBottomOf="@+id/date"
             card_view:layout_constraintStart_toEndOf="@+id/logo_home"
             card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            android:text="10"
+            tools:text="10"
             android:visibility="gone"
             android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginLeft="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_40sdp"
             android:textSize="@dimen/_17ssp"
             android:textColor="@color/white"
             android:textStyle="bold"
@@ -122,12 +121,10 @@
             android:id="@+id/away_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Manchester City ABC"
+            tools:text="Manchester City ABCdasdsaddfgfdgdfgdfdfgdfg"
             android:textSize="@dimen/_13ssp"
             android:textColor="@color/white"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_marginTop="@dimen/_8sdp"
-            card_view:layout_constraintTop_toBottomOf="@+id/logo_away"
+            android:layout_marginEnd="@dimen/_8sdp"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"
             />
@@ -138,15 +135,14 @@
             card_view:layout_constraintTop_toBottomOf="@+id/date"
             card_view:layout_constraintEnd_toStartOf ="@+id/logo_away"
             card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            android:text="10"
+            tools:text="10"
             android:visibility="gone"
             android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginRight="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
             android:textSize="@dimen/_17ssp"
             android:textColor="@color/white"
             android:textStyle="bold"
             />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
