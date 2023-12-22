@@ -9,6 +9,10 @@ object Constants {
         const val ID_BUNDESLIGA = 78
         const val ID_LEAGUE1 = 61
         const val ID_LALIGA = 140
+        const val ID_WORLD_CUP = 1
+        const val ID_C1 = 2
+        const val ID_C2 = 3
+        const val ID_EURO = 4
         const val KEY_MATCH = "key match"
         const val TYPE_EVENT = "Goal"
 

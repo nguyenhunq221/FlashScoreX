@@ -2,6 +2,7 @@ package com.vnc.flashscorex.ui.dashboard.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentHomeBinding
 import com.vnc.flashscorex.ui.main.LeagueActivity
 
-class HomeFragment : Fragment(),View.OnClickListener {
+class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClickListener {
 
     private var bannerList:ArrayList<Int> = ArrayList()
     private  var _binding:FragmentHomeBinding? = null
@@ -49,6 +50,8 @@ class HomeFragment : Fragment(),View.OnClickListener {
         slider.scrollTimeInSec = 4
         slider.isAutoCycle = true
         slider.startAutoCycle()
+
+        adapter.setClickListener(this@HomeFragment)
 
         PremierLeague.setOnClickListener(this@HomeFragment)
         laliga.setOnClickListener(this@HomeFragment)
@@ -101,5 +104,24 @@ class HomeFragment : Fragment(),View.OnClickListener {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onClickSlide(slidePosition: Int) {
+        val intent = Intent(requireActivity(),LeagueActivity::class.java)
+        Log.e("hung", "slidePosition: " +  slidePosition)
+        if (slidePosition == 0){
+            intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.champion_league))
+            intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_C1)
+        }else if (slidePosition == 1){
+            intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.europa_league))
+            intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_C2)
+        }else if (slidePosition == 2){
+            intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.euro))
+            intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_EURO)
+        }else if (slidePosition == 3){
+            intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.world_cup))
+            intent.putExtra(Constants.KEY.LEAGUE_ID,Constants.KEY.ID_WORLD_CUP)
+        }
+        startActivity(intent)
     }
 }
