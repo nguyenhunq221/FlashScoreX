@@ -18,12 +18,13 @@ import java.net.SocketTimeoutException
 
 class StandingViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val standingDetailList = MutableLiveData<List<StandingDetail>>()
+    private val standingParentList = MutableLiveData<List<List<StandingDetail>>>()
     private val errorMessage = MutableLiveData<String>()
 
-    fun getStanding():LiveData<List<StandingDetail>>{
-        return standingDetailList
+    fun getParentStanding():LiveData<List<List<StandingDetail>>>{
+        return standingParentList
     }
+
     fun getStandingError():LiveData<String>{
         return errorMessage
     }
@@ -36,9 +37,7 @@ class StandingViewModel(application: Application) : AndroidViewModel(application
                     response: Response<StandingModel>
                 ) {
                     if (response.code() == Constants.API.API_CODE_OK) {
-                        standingDetailList.postValue(
-                            response.body()!!.response[0].league.standings[0]
-                        )
+                        standingParentList.postValue(response.body()!!.response[0].league.standings)
                     } else {
                         errorMessage.postValue(response.message())
                     }

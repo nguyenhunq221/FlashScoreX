@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.vnc.flashscorex.adapter.StandingAdapter
-import com.vnc.flashscorex.constant.Constants
+import com.vnc.flashscorex.adapter.StandingParentAdapter
 import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.model.standing.StandingDetail
 import com.vnc.flashscorex.utils.GetCurrent
@@ -16,7 +15,7 @@ import com.vnc.flashscorex.utils.GetCurrent
 class StandingFragment(var idLeague: Int) : Fragment() {
     private  var _binding: FragmentStandingBinding? = null
     private lateinit var viewModel: StandingViewModel
-    private lateinit var adapter:StandingAdapter
+    private lateinit var adapterParentStanding:StandingParentAdapter
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,22 +33,32 @@ class StandingFragment(var idLeague: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.showStandings(idLeague, GetCurrent.getCurrentYear())
+
+        if (idLeague == 1 ){
+            viewModel.showStandings(idLeague, 2022)
+        }else if (idLeague == 4){
+            viewModel.showStandings(idLeague, 2020)
+        }else{
+            viewModel.showStandings(idLeague, GetCurrent.getCurrentYear())
+        }
+
         setObserve()
     }
 
     private fun setObserve(){
-        viewModel.getStanding().observe(viewLifecycleOwner){
-            getStanding(it)
+
+        viewModel.getParentStanding().observe(viewLifecycleOwner){
+            getParentStanding(it)
         }
+
         viewModel.getStandingError().observe(viewLifecycleOwner){
             Toast.makeText(requireActivity(),it, Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun getStanding(mList:List<StandingDetail>){
-        adapter = StandingAdapter(mList,requireActivity())
-        binding.rcvStanding.adapter = adapter
+    private fun getParentStanding(mList:List<List<StandingDetail>>){
+        adapterParentStanding = StandingParentAdapter(mList,requireActivity())
+        binding.rcvStanding.adapter = adapterParentStanding
     }
 
     override fun onDestroy() {
