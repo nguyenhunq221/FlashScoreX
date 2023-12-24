@@ -32,10 +32,7 @@ class StandingViewModel(application: Application) : AndroidViewModel(application
     fun showStandings(id: Int, season: Int) = viewModelScope.launch{
         ApiClient.apiService.getStandings(Config.key, id, season)
             .enqueue(object : Callback<StandingModel> {
-                override fun onResponse(
-                    call: Call<StandingModel>,
-                    response: Response<StandingModel>
-                ) {
+                override fun onResponse(call: Call<StandingModel>, response: Response<StandingModel>) {
                     if (response.code() == Constants.API.API_CODE_OK) {
                         standingParentList.postValue(response.body()!!.response[0].league.standings)
                     } else {

@@ -30,9 +30,7 @@ class TopAssistViewModel(application: Application) : AndroidViewModel(applicatio
         ApiClient.apiService.getTopAssist(Config.key,id,season).enqueue(object : retrofit2.Callback<TopScoreModel> {
             override fun onResponse(call: Call<TopScoreModel>, response: Response<TopScoreModel>) {
                 if (response.code() == Constants.API.API_CODE_OK) {
-                    listTopAssist.postValue(
-                        response.body()!!.response
-                    )
+                    listTopAssist.postValue(response.body()!!.response)
                 } else {
                     errorMessage.postValue(response.message())
                 }
