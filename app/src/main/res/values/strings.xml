@@ -69,4 +69,6 @@
     <string name="pass_percent_en">Passes %</string>
     <string name="expect_goal_en">expected_goals</string>
 
+    <!--   Match -->
+    <string name="not_have_data_match">Chưa có thông tin về trận đấu này</string>
 </resources>

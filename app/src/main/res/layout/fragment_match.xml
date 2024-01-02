@@ -6,6 +6,57 @@
     android:layout_height="match_parent"
     android:background="@color/back_ground_main">
 
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_round"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/shimmerFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_7sdp"
+        android:layout_height="0dp"
+        android:translationZ="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+
+            <include layout="@layout/shimmer_placeholder_layout" />
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner_round"
         style="@style/SpinnerText"
@@ -51,17 +102,6 @@
             app:layout_constraintTop_toBottomOf="@+id/spinner_round" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/ProgressBarTheme"
-        app:layout_constraintStart_toStartOf="@+id/swiperefresh"
-        app:layout_constraintTop_toTopOf="@id/swiperefresh"
-        app:layout_constraintBottom_toBottomOf="@id/swiperefresh"
-        app:layout_constraintEnd_toEndOf="@id/swiperefresh"
-       />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

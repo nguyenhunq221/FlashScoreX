@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.vnc.flashscorex.R
@@ -65,7 +66,11 @@ class MatchAdapter(var mList: List<ResponseDetail>, var context: Context) :
             .into(holder.binding.logoAway)
 
         holder.binding.cardView.setOnClickListener{
-            listener?.onClickMatch(mList[position])
+            if (mList[position].fixture.status.trangThai == "FT"){
+                listener?.onClickMatch(mList[position])
+            }else{
+                Toast.makeText(context, context.getString(R.string.not_have_data_match), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

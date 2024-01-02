@@ -89,9 +89,10 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
 
     private fun getStanding(mList: List<ResponseDetail>) {
         if(mList.isEmpty()){
-            binding.progress.visibility = View.VISIBLE
+            binding.shimmerFrameLayout.startShimmer()
         }else{
-            binding.progress.visibility = View.GONE
+            binding.shimmerFrameLayout.stopShimmer()
+            binding.shimmerFrameLayout.visibility = View.GONE
             matchAdapter = MatchAdapter(mList, requireActivity())
             matchAdapter.setClickListener(this)
             binding.rcvMatch.adapter = matchAdapter
@@ -111,5 +112,15 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
         val intent = Intent(requireActivity(),DetailMatchActivity::class.java)
         intent.putExtra(Constants.KEY.KEY_MATCH,responseDetail.fixture.id)
         startActivity(intent)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.shimmerFrameLayout.startShimmer()
+    }
+
+    override fun onPause() {
+        binding.shimmerFrameLayout.stopShimmer()
+        super.onPause()
     }
 }
