@@ -47,23 +47,55 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:src="@drawable/ic_logo"
-            android:layout_marginTop="@dimen/_40sdp"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            card_view:layout_constraintEnd_toEndOf="@+id/home_name"
-            card_view:layout_constraintStart_toStartOf="@+id/home_name"
+            android:layout_marginTop="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_45sdp"
+            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/home_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Manchester United"
-            android:textSize="@dimen/_13ssp"
-            android:textColor="@color/white"
-            android:layout_marginStart="@dimen/_8sdp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            />
+            card_view:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/home_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Manchester United  Manchester United "
+                android:maxLines="1"
+                android:maxLength="30"
+                android:ellipsize="end"
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/white"
+                android:gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:padding="@dimen/_4sdp"
+                />
+
+            <TextView
+                android:layout_weight="1"
+                android:id="@+id/away_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Manchester City Manchester City  "
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/white"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:maxLength="30"
+                android:ellipsize="end"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:padding="@dimen/_4sdp"
+                />
+
+        </LinearLayout>
+
+
 
         <TextView
             android:id="@+id/date"
@@ -81,12 +113,11 @@
             android:id="@+id/home_goal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toBottomOf="@+id/date"
+            card_view:layout_constraintTop_toTopOf="@+id/logo_home"
             card_view:layout_constraintStart_toEndOf="@+id/logo_home"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
+            card_view:layout_constraintBottom_toBottomOf="@+id/logo_home"
             tools:text="10"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="visible"
             android:layout_marginStart="@dimen/_40sdp"
             android:textSize="@dimen/_17ssp"
             android:textColor="@color/white"
@@ -96,10 +127,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             card_view:layout_constraintEnd_toStartOf="@id/away_goal"
-            card_view:layout_constraintTop_toBottomOf="@+id/date"
+            card_view:layout_constraintTop_toTopOf="@+id/home_goal"
+            card_view:layout_constraintBottom_toBottomOf="@+id/home_goal"
             card_view:layout_constraintStart_toEndOf="@+id/home_goal"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            android:layout_marginTop="@dimen/_10sdp"
             android:text=" - "
             android:textSize="@dimen/_15ssp"
             android:textColor="@color/white"
@@ -111,33 +141,21 @@
             android:layout_width="@dimen/_35sdp"
             android:layout_height="@dimen/_35sdp"
             android:src="@drawable/ic_logo"
-            android:layout_marginTop="@dimen/_40sdp"
-            card_view:layout_constraintBottom_toTopOf="@+id/away_name"
-            card_view:layout_constraintEnd_toEndOf="@+id/away_name"
-            card_view:layout_constraintStart_toStartOf="@+id/away_name"
+            android:layout_marginTop="@dimen/_45sdp"
+            android:layout_marginEnd="@dimen/_45sdp"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/away_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Manchester City ABCdasdsaddfgfdgdfgdfdfgdfg"
-            android:textSize="@dimen/_13ssp"
-            android:textColor="@color/white"
-            android:layout_marginEnd="@dimen/_8sdp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            />
+
         <TextView
             android:id="@+id/away_goal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toBottomOf="@+id/date"
             card_view:layout_constraintEnd_toStartOf ="@+id/logo_away"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
+            card_view:layout_constraintTop_toTopOf="@+id/logo_home"
+            card_view:layout_constraintBottom_toBottomOf="@+id/logo_home"
             tools:text="10"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="visible"
             android:layout_marginEnd="@dimen/_40sdp"
             android:textSize="@dimen/_17ssp"
             android:textColor="@color/white"
