@@ -31,7 +31,7 @@
     <string name="channel_name">Channel 1</string>
     <string name="channel_description">This is channel 1</string>
 
-<!--    DetailMatch Statistic VN -->
+    <!--    DetailMatch Statistic VN -->
     <string name="shot_on_goal">Sút trúng đích</string>
     <string name="shot_off_goal">Sút không trúng đích</string>
     <string name="total_shoot">Tổng số lần sút</string>

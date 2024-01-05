@@ -20,6 +20,9 @@
         android:theme="@style/Base.Theme.FlashScoreX"
         tools:targetApi="31">
         <activity
+            android:name=".ui.player.DetailPlayerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.match.DetailMatchActivity"
             android:exported="false" />
         <activity
@@ -40,7 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.dashboard.DashBoardActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <receiver
             android:name=".ui.dashboard.NoticeReceiver"
@@ -54,7 +57,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>
