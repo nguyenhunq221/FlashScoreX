@@ -71,4 +71,15 @@
 
     <!--   Match -->
     <string name="not_have_data_match">Chưa có thông tin về trận đấu này</string>
+
+    <!--   Detail Player -->
+    <string name="player_ST">Tiền đạo</string>
+    <string name="player_ST_eng">Attacker</string>
+    <string name="player_CM">Tiền vệ</string>
+    <string name="player_CM_eng">Midfielder</string>
+    <string name="player_CB">Hậu vệ</string>
+    <string name="player_CB_eng">Hậu vệ</string>
+    <string name="injury">Có</string>
+    <string name="not_injury">Không</string>
+
 </resources>

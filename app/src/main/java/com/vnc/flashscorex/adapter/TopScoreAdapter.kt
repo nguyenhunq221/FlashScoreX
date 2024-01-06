@@ -62,10 +62,16 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) :
             dialog.show()
             true
         }
+
+        holder.itemView.setOnClickListener{
+            listener?.onClickDetailPlayer(mList[position])
+        }
+
     }
 
     interface ItemClickListener {
         fun onClickLikePlayer(player: Player)
+        fun onClickDetailPlayer( responseDetail: ResponseDetail )
     }
 
     fun setClickListener(itemClickListener: ItemClickListener) {

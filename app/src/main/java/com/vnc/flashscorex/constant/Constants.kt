@@ -15,8 +15,12 @@ object Constants {
         const val ID_EURO = 4
         const val KEY_MATCH = "key match"
         const val TYPE_EVENT = "Goal"
-
     }
+
+    object PUTDATA {
+        const val DETAIL_PLAYER = "Detail player"
+    }
+
     object API {
         const val API_CODE_OK = 200
         const val API_CODE_UNAUTHORIZED = 401

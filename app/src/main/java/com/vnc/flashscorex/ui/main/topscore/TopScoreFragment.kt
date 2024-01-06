@@ -1,5 +1,6 @@
 package com.vnc.flashscorex.ui.main.topscore
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +10,12 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.TopScoreAdapter
+import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.database.FavorPlayerDatabase
 import com.vnc.flashscorex.databinding.FragmentTopScoreBinding
 import com.vnc.flashscorex.model.topScore.Player
 import com.vnc.flashscorex.model.topScore.ResponseDetail
+import com.vnc.flashscorex.ui.player.DetailPlayerActivity
 import com.vnc.flashscorex.utils.GetCurrent
 
 class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClickListener {
@@ -66,5 +69,11 @@ class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClick
         }else{
             Toast.makeText(requireActivity(),requireContext().getString(R.string.player_added), Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onClickDetailPlayer(responseDetail: ResponseDetail) {
+       val intent = Intent(requireActivity(), DetailPlayerActivity ::class.java)
+        intent.putExtra(Constants.PUTDATA.DETAIL_PLAYER,responseDetail)
+        startActivity(intent)
     }
 }

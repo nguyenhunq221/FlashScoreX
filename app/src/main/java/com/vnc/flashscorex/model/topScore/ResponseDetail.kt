@@ -1,6 +1,8 @@
 package com.vnc.flashscorex.model.topScore
 
-data class ResponseDetail(
+import java.io.Serializable
+
+data class ResponseDetail (
     val player: Player,
     val statistics:List<Statistics>
-)
+) : Serializable

@@ -1,158 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/card_view"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="9dp"
-    android:elevation="@dimen/_4sdp"
-    card_view:cardCornerRadius="8dp"
+xmlns:card_view="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/card_view"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="9dp"
+android:elevation="@dimen/_4sdp"
+card_view:cardCornerRadius="8dp"
+android:background="@drawable/bg_gradient"
     >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:minHeight="@dimen/_110sdp"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="@dimen/_110sdp"
+    android:background="@drawable/bg_gradient"
+    >
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/status_match"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        tools:text="FT"
+        android:textStyle="italic"
         android:background="@drawable/bg_gradient"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_6sdp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/round"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        tools:text="Round 38"
+        android:background="@drawable/bg_gradient"
+        android:textStyle="italic"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/white"
+        android:layout_marginRight="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_6sdp"/>
+
+    <ImageView
+        android:id="@+id/logo_home"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/bg_logo"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:layout_marginStart="@dimen/_45sdp"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        android:weightSum="2"
         >
-        <TextView
-            android:id="@+id/status_match"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            tools:text="FT"
-            android:background="@drawable/bg_gradient"
-            android:textStyle="italic"
-            android:textSize="@dimen/_14ssp"
-            android:textColor="@color/white"
-            android:layout_marginLeft="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_6sdp"/>
-
-        <TextView
-            android:id="@+id/round"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            tools:text="Round 38"
-            android:textStyle="italic"
-            android:textSize="@dimen/_14ssp"
-            android:textColor="@color/white"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_6sdp"/>
-
-        <ImageView
-            android:id="@+id/logo_home"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:background="@drawable/bg_logo"
-            android:layout_marginTop="@dimen/_40sdp"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            card_view:layout_constraintEnd_toEndOf="@+id/home_name"
-            card_view:layout_constraintStart_toStartOf="@+id/home_name"
-            card_view:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_weight="1"
             android:id="@+id/home_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Manchester United"
+            tools:text="Manchester United Man"
+            android:maxLines="1"
+            android:maxLength="30"
+            android:background="@drawable/bg_gradient"
+            android:ellipsize="end"
             android:textSize="@dimen/_13ssp"
-            android:background="@drawable/bg_gradient"
             android:textColor="@color/white"
-            android:layout_marginStart="@dimen/_8sdp"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center_horizontal"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:padding="@dimen/_4sdp"
             />
 
-        <TextView
-            android:id="@+id/date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_12ssp"
-            android:background="@drawable/bg_gradient"
-            tools:text="20-11-2023 19:00"/>
-
-        <TextView
-            android:id="@+id/home_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toBottomOf="@+id/date"
-            card_view:layout_constraintStart_toEndOf="@+id/logo_home"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            tools:text="10"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginStart="@dimen/_40sdp"
-            android:textSize="@dimen/_17ssp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:background="@drawable/bg_gradient"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintEnd_toStartOf="@id/away_goal"
-            card_view:layout_constraintTop_toBottomOf="@+id/date"
-            card_view:layout_constraintStart_toEndOf="@+id/home_goal"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            android:layout_marginTop="@dimen/_10sdp"
-            tools:text=" - "
-            android:textSize="@dimen/_15ssp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:background="@drawable/bg_gradient"
-            />
-
-        <ImageView
-            android:id="@+id/logo_away"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:background="@drawable/bg_logo"
-            android:layout_marginTop="@dimen/_40sdp"
-            card_view:layout_constraintBottom_toTopOf="@+id/away_name"
-            card_view:layout_constraintEnd_toEndOf="@+id/away_name"
-            card_view:layout_constraintStart_toStartOf="@+id/away_name"
-            card_view:layout_constraintTop_toTopOf="parent"
-            />
-
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_weight="1"
             android:id="@+id/away_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Manchester City "
+            tools:text="Manchester City Man "
             android:textSize="@dimen/_13ssp"
             android:textColor="@color/white"
-            android:layout_marginEnd="@dimen/_8sdp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintBottom_toBottomOf="parent"
-            android:background="@drawable/bg_gradient"
-            />
-        <TextView
-            android:id="@+id/away_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            card_view:layout_constraintTop_toBottomOf="@+id/date"
-            card_view:layout_constraintEnd_toStartOf ="@+id/logo_away"
-            card_view:layout_constraintBottom_toTopOf="@+id/home_name"
-            tools:text="10"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_40sdp"
-            android:textSize="@dimen/_17ssp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
+            android:gravity="center_horizontal"
+            android:maxLines="1"
+            android:maxLength="30"
+            android:ellipsize="end"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:padding="@dimen/_4sdp"
             android:background="@drawable/bg_gradient"
             />
 
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:textColor="@color/white"
+        android:background="@drawable/bg_gradient"
+        android:textSize="@dimen/_12ssp"
+        tools:text="20-11-2023 19:00"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/home_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintTop_toTopOf="@+id/logo_home"
+        card_view:layout_constraintStart_toEndOf="@+id/logo_home"
+        card_view:layout_constraintBottom_toBottomOf="@+id/logo_home"
+        tools:text="  "
+        android:visibility="visible"
+        android:layout_marginStart="@dimen/_40sdp"
+        android:textSize="@dimen/_17ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintEnd_toStartOf="@id/away_goal"
+        card_view:layout_constraintTop_toTopOf="@+id/home_goal"
+        card_view:layout_constraintBottom_toBottomOf="@+id/home_goal"
+        card_view:layout_constraintStart_toEndOf="@+id/home_goal"
+        android:text="  "
+        android:textSize="@dimen/_15ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:id="@+id/logo_away"
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/bg_logo"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:layout_marginEnd="@dimen/_45sdp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/away_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:layout_constraintEnd_toStartOf ="@+id/logo_away"
+        card_view:layout_constraintTop_toTopOf="@+id/logo_home"
+        card_view:layout_constraintBottom_toBottomOf="@+id/logo_home"
+        tools:text="  "
+        android:visibility="visible"
+        android:layout_marginEnd="@dimen/_40sdp"
+        android:textSize="@dimen/_17ssp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

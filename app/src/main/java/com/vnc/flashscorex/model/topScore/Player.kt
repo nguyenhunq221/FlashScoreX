@@ -3,6 +3,7 @@ package com.vnc.flashscorex.model.topScore
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "Favorite Player")
 data class Player(
@@ -19,4 +20,4 @@ data class Player(
     val birth: Birth,
     val weight:String,
     val nationality:String
-)
+):Serializable
