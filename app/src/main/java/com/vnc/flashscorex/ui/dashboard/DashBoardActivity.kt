@@ -5,7 +5,11 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
@@ -17,11 +21,11 @@ import com.vnc.flashscorex.databinding.ActivityDashBoardBinding
 import com.vnc.flashscorex.utils.PreferenceUtil
 import java.util.Calendar
 
-
 class DashBoardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashBoardBinding
     private lateinit var navController: NavController
     private lateinit var sharedPreferences:PreferenceUtil
+    private var doubleBackToExitPressedOnce:Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +33,8 @@ class DashBoardActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
         sharedPreferences = PreferenceUtil(this)
+
+        window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -111,6 +117,21 @@ class DashBoardActivity : AppCompatActivity() {
 
             sharedPreferences.saveBoolean("notificationSet",true)
         }
+    }
+
+    override fun onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            val startMain = Intent(Intent.ACTION_MAIN)
+            startMain.addCategory(Intent.CATEGORY_HOME)
+            startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(startMain)
+            return
+        }
+
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(this, getString(R.string.exit), Toast.LENGTH_SHORT).show()
+
+        Handler(Looper.getMainLooper()).postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 
 }

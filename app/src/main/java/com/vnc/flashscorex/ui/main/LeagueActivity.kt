@@ -2,6 +2,7 @@ package com.vnc.flashscorex.ui.main
 
 import android.os.Bundle
 import android.util.Log
+import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.ViewPagerAdapter
@@ -21,12 +22,13 @@ class LeagueActivity : BaseActivity() {
         setContentView(binding.root)
         supportActionBar!!.hide()
 
+        window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
+
         val intent = intent
         val title: String? = intent.getStringExtra(Constants.KEY.LEAGUE_TITLE)
         binding.topAppBar.title = title
 
         val idLeague:Int = intent.getIntExtra(Constants.KEY.LEAGUE_ID,0)
-        Log.e("hung", "id: "+ idLeague )
 
         val myViewpager = ViewPagerAdapter(this,idLeague)
         binding.viewPager.adapter = myViewpager

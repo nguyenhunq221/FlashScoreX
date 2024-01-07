@@ -17,6 +17,7 @@
     <string name="world_cup">World Cup 2022</string>
     <string name="europa_league">EuropaLeague</string>
     <string name="euro">Euro 2020</string>
+    <string name="exit">Bấm back lần nữa để thoát</string>
 
     <string name="round">Vòng %s</string>
     <string name="add_to_favor">Thêm  cầu thủ vào danh sách yêu thích</string>
