@@ -68,5 +68,8 @@ class DetailPlayerActivity : AppCompatActivity() {
             .centerCrop()
             .into(imageDetailPlayer)
 
+        binding.back.setOnClickListener {
+            onBackPressed()
+        }
     }
 }
