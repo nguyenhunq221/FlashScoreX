@@ -69,7 +69,7 @@ class DetailPlayerActivity : AppCompatActivity() {
             .into(imageDetailPlayer)
 
         binding.back.setOnClickListener {
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 }

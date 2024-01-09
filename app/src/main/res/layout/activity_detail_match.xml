@@ -54,7 +54,7 @@
             android:layout_height="@dimen/_55sdp"
             android:layout_marginStart="@dimen/_25sdp"
             android:layout_marginTop="@dimen/_40sdp"
-            android:src="@drawable/img"
+            tools:src="@drawable/img"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,7 +64,7 @@
             android:layout_height="@dimen/_55sdp"
             android:layout_marginTop="@dimen/_40sdp"
             android:layout_marginEnd="@dimen/_25sdp"
-            android:src="@drawable/img"
+            tools:src="@drawable/img"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,9 +74,52 @@
             android:layout_height="@dimen/_50sdp"
             android:layout_marginTop="@dimen/_50sdp"
             android:src="@drawable/ic_vs"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_15ssp"
+            app:layout_constraintEnd_toStartOf="@id/goalsTeamB"
+            app:layout_constraintTop_toTopOf="@+id/goalsTeamA"
+            app:layout_constraintBottom_toBottomOf="@+id/goalsTeamA"
+            app:layout_constraintStart_toEndOf="@+id/goalsTeamA"
+            />
+
+        <TextView
+            android:id="@+id/goalsTeamA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintStart_toEndOf="@+id/logoTeamA"
+            app:layout_constraintTop_toTopOf="@+id/logoTeamA"
+            app:layout_constraintBottom_toBottomOf="@+id/logoTeamA"
+            android:layout_marginStart="@dimen/_47sdp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/goalsTeamB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20ssp"
+            app:layout_constraintEnd_toStartOf="@id/logoTeamB"
+            app:layout_constraintTop_toTopOf="@+id/logoTeamA"
+            app:layout_constraintBottom_toBottomOf="@+id/logoTeamA"
+            android:layout_marginEnd="@dimen/_47sdp"
+            android:textStyle="bold"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvStatistic"

@@ -3,8 +3,10 @@ package com.vnc.flashscorex.ui.main.match
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.DetailMatchAdapter
 import com.vnc.flashscorex.adapter.GoalAdapter
 import com.vnc.flashscorex.adapter.GoalTeamBAdapter
@@ -26,6 +28,7 @@ class DetailMatchActivity : AppCompatActivity() {
         binding = ActivityDetailMatchBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar!!.hide()
+        window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
         setObserve()
         val intent = intent
         var idFixture = intent.getIntExtra(Constants.KEY.KEY_MATCH,0)
@@ -65,6 +68,9 @@ class DetailMatchActivity : AppCompatActivity() {
                 listGoalTeamB.add(mList[i])
             }
         }
+
+        binding.goalsTeamA.text = listGoalTeamA.size.toString()
+        binding.goalsTeamB.text = listGoalTeamB.size.toString()
 
         goalAdapter = GoalAdapter(this,listGoalTeamA)
         goalAdapter.notifyDataSetChanged()
