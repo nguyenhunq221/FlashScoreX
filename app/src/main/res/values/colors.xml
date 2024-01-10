@@ -14,4 +14,5 @@
     <color name="back_ground_progressBarB">#0197DB</color>
     <color name="text_secondary">#4B4C4D</color>
     <color name="status_splash">#ec71ff</color>
+    <color name="status_detail_match">#272a39</color>
 </resources>

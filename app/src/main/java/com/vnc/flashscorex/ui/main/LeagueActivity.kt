@@ -1,7 +1,6 @@
 package com.vnc.flashscorex.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.core.content.ContextCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.vnc.flashscorex.R
@@ -9,10 +8,6 @@ import com.vnc.flashscorex.adapter.ViewPagerAdapter
 import com.vnc.flashscorex.base.BaseActivity
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.ActivityLeagueBinding
-import com.vnc.flashscorex.ui.main.match.MatchFragment
-import com.vnc.flashscorex.ui.main.standing.StandingFragment
-import com.vnc.flashscorex.ui.main.topassist.TopAssistFragment
-import com.vnc.flashscorex.ui.main.topscore.TopScoreFragment
 
 class LeagueActivity : BaseActivity() {
     private lateinit var binding: ActivityLeagueBinding
@@ -20,7 +15,7 @@ class LeagueActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLeagueBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar!!.hide()
+//        supportActionBar!!.hide()
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
 

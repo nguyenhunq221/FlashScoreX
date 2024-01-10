@@ -17,8 +17,6 @@ class DetailPlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailPlayerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar!!.hide()
-
         setUpView()
     }
 

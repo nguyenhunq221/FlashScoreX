@@ -121,6 +121,41 @@
             android:textStyle="bold"
             />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_goal"
+            android:layout_marginTop="@dimen/_5sdp"
+            >
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutDetailMatch"
+                android:layout_width="match_parent"
+                android:background="@color/tab_layout"
+                app:tabSelectedTextColor="#F3E478"
+                app:tabTextColor="@color/white"
+                app:tabMode="scrollable"
+                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPagerDetailMatch"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tabLayoutDetailMatch" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvStatistic"
             android:layout_width="match_parent"

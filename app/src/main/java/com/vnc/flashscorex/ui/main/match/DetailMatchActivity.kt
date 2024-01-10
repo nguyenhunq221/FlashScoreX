@@ -27,8 +27,7 @@ class DetailMatchActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[DetailMatchViewModel::class.java]
         binding = ActivityDetailMatchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar!!.hide()
-        window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.status_detail_match)
         setObserve()
         val intent = intent
         var idFixture = intent.getIntExtra(Constants.KEY.KEY_MATCH,0)

@@ -20,7 +20,6 @@ class LaunchActivity : AppCompatActivity() {
 //        installSplashScreen()
         binding = ActivityLaunchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.hide()
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.status_splash)
 

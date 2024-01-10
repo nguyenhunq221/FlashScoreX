@@ -32,7 +32,6 @@ class DashBoardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar!!.hide()
         sharedPreferences = PreferenceUtil(this)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
@@ -80,8 +79,8 @@ class DashBoardActivity : AppCompatActivity() {
 //            }
 //        }
 
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.fragmentHome,R.id.favorFragment,R.id.favorFragment,R.id.predictFragment))
-        setupActionBarWithNavController(navController,appBarConfiguration)
+//        val appBarConfiguration = AppBarConfiguration(setOf(R.id.fragmentHome,R.id.favorFragment,R.id.favorFragment,R.id.predictFragment))
+//        setupActionBarWithNavController(navController,appBarConfiguration)
 
         binding.bottomNavigation.setupWithNavController(navController)
 //        binding.bottomNavigation.apply {
