@@ -15,7 +15,7 @@ class LeagueActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLeagueBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        supportActionBar!!.hide()
+        supportActionBar?.hide()
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
 
@@ -36,14 +36,6 @@ class LeagueActivity : BaseActivity() {
             }
         }.attach()
         binding.viewPager.offscreenPageLimit = 2
-
-// binding.tabLayout.getTabAt(0)?.setCustomView()
-// View tabOne = LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-//ImageView tabIconOne = tabOne.findViewById(R.id.tab_icon);
-//TextView tabTextOne = tabOne.findViewById(R.id.tab_text);
-//tabIconOne.setImageResource(R.drawable.ic_tab_1);
-//tabTextOne.setText("Tab 1");
-//tabLayout.getTabAt(0).setCustomView(tabOne);
 
         setUpView()
     }

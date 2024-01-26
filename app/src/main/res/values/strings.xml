@@ -52,6 +52,10 @@
     <string name="expect_goal">Bàn thắng kì vọng</string>
 
     <!--    DetailMatch Statistic En -->
+    <string name="title_statistic">Thống kê</string>
+    <string name="player_statistic">Thống kê</string>
+    <string name="line_up">Thống kê</string>
+    <string name="event">Thống kê</string>
     <string name="shot_on_goal_en">Shots on Goal</string>
     <string name="shot_off_goal_en">Shots off Goal</string>
     <string name="total_shoot_en">Total Shots</string>

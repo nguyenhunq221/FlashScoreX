@@ -6,14 +6,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.material.tabs.TabLayoutMediator
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.DetailMatchAdapter
 import com.vnc.flashscorex.adapter.GoalAdapter
 import com.vnc.flashscorex.adapter.GoalTeamBAdapter
+import com.vnc.flashscorex.adapter.ViewPagerDetailMatchAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.ActivityDetailMatchBinding
 import com.vnc.flashscorex.model.event.GoalModel
 import com.vnc.flashscorex.model.statistic.Statistic
+import com.vnc.flashscorex.ui.detailMatch.statistic.MatchStatisticFragment
 
 class DetailMatchActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailMatchBinding
@@ -33,11 +36,29 @@ class DetailMatchActivity : AppCompatActivity() {
         var idFixture = intent.getIntExtra(Constants.KEY.KEY_MATCH,0)
         viewModel.getStatistic(idFixture)
         viewModel.getGoal(idFixture)
+
+
+        val bundle = Bundle()
+        bundle.putInt("idFixture", idFixture)
+        val fragment = MatchStatisticFragment()
+        fragment.arguments = bundle
+
+        val myViewpager = ViewPagerDetailMatchAdapter(this)
+        binding.viewPagerDetailMatch.adapter = myViewpager
+        TabLayoutMediator(binding.tabLayoutDetailMatch, binding.viewPagerDetailMatch) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.title_statistic)
+                1 -> tab.text = getString(R.string.title_statistic)
+                2 -> tab.text = getString(R.string.title_statistic)
+                3 -> tab.text = getString(R.string.title_statistic)
+            }
+        }.attach()
+        binding.viewPagerDetailMatch.offscreenPageLimit = 2
     }
 
     private fun setObserve(){
         viewModel.getListStatistic().observe(this){
-            getListStatistic(it[0].statistics,it[1].statistics)
+//            getListStatistic(it[0].statistics,it[1].statistics)
             loadLogo(it[0].team.logo,binding.logoTeamA)
             loadLogo(it[1].team.logo,binding.logoTeamB)
             var idTeamA = it[0].team.id
@@ -51,9 +72,9 @@ class DetailMatchActivity : AppCompatActivity() {
     }
 
     private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){
-        adapter = DetailMatchAdapter(mListTeamA,mListTeamB,this)
-        binding.rcvStatistic.adapter = adapter
-        adapter.notifyDataSetChanged()
+//        adapter = DetailMatchAdapter(mListTeamA,mListTeamB,this)
+//        binding.rcvStatistic.adapter = adapter
+//        adapter.notifyDataSetChanged()
     }
 
     private fun getListGoal(mList:List<GoalModel>, idTeamA:Int,idTeamB:Int){
