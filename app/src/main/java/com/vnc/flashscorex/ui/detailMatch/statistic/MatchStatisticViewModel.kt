@@ -7,10 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vnc.flashscorex.api.ApiClient
 import com.vnc.flashscorex.constant.Config
-import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.model.event.GoalModel
 import com.vnc.flashscorex.model.statistic.ResponseDetail
-import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.launch
 
 class MatchStatisticViewModel(application: Application) : AndroidViewModel(application) {
@@ -41,15 +39,4 @@ class MatchStatisticViewModel(application: Application) : AndroidViewModel(appli
         }
     }
 
-    fun getGoal(id:Int){
-        viewModelScope.launch {
-            try {
-                listGoal.postValue(ApiClient.apiService.getEvent(Config.key,id, Constants.KEY.TYPE_EVENT).body()?.listGoal)
-            }catch (e:Exception){
-                errorMessage.postValue(e.message)
-            }catch (e : TimeoutCancellationException){
-                errorMessage.postValue("Time out")
-            }
-        }
-    }
 }

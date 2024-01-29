@@ -1,6 +1,7 @@
 package com.vnc.flashscorex.ui.detailMatch.statistic
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,6 @@ import com.vnc.flashscorex.adapter.DetailMatchAdapter
 import com.vnc.flashscorex.adapter.GoalAdapter
 import com.vnc.flashscorex.adapter.GoalTeamBAdapter
 import com.vnc.flashscorex.base.BaseFragment
-import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchStatisticBinding
 import com.vnc.flashscorex.model.statistic.Statistic
 
@@ -45,6 +45,7 @@ class MatchStatisticFragment : BaseFragment() {
     override fun initView() {
             val bundle = this.arguments
             var idFixture = bundle?.getInt("idFixture")
+            Log.e(TAG, "idFixture: " + idFixture )
             if (idFixture != null){
             viewModel.getStatistic(idFixture)
         }

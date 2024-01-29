@@ -48,13 +48,15 @@ class DetailMatchActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayoutDetailMatch, binding.viewPagerDetailMatch) { tab, position ->
             when (position) {
                 0 -> tab.text = getString(R.string.title_statistic)
-                1 -> tab.text = getString(R.string.title_statistic)
-                2 -> tab.text = getString(R.string.title_statistic)
-                3 -> tab.text = getString(R.string.title_statistic)
+                1 -> tab.text = getString(R.string.line_up)
+                2 -> tab.text = getString(R.string.event)
+                3 -> tab.text = getString(R.string.player_statistic)
             }
         }.attach()
         binding.viewPagerDetailMatch.offscreenPageLimit = 2
     }
+
+//    private fun getCurrentFragment() = supportFragmentManager.findFragmentByTag()
 
     private fun setObserve(){
         viewModel.getListStatistic().observe(this){
