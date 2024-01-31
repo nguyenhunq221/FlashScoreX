@@ -1,6 +1,7 @@
 package com.vnc.flashscorex.ui.detailMatch.statistic
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,6 +33,7 @@ class MatchStatisticViewModel(application: Application) : AndroidViewModel(appli
     fun getStatistic (id:Int){
         viewModelScope.launch {
             try {
+                Log.e("hung99", "getStatistic: " + ApiClient.apiService.getStatistic(Config.key,id).body()?.response?.size )
                 listStatistic.postValue(ApiClient.apiService.getStatistic(Config.key,id).body()?.response)
             }catch (e:Exception){
                 errorMessage.postValue(e.message)

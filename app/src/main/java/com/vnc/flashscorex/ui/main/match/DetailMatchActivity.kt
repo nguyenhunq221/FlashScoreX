@@ -38,9 +38,11 @@ class DetailMatchActivity : AppCompatActivity() {
         viewModel.getGoal(idFixture)
 
 
-        val bundle = Bundle()
-        bundle.putInt("idFixture", idFixture)
+
         val fragment = MatchStatisticFragment()
+        val bundle = Bundle().apply {
+            putInt("idFixture", idFixture)
+        }
         fragment.arguments = bundle
 
         val myViewpager = ViewPagerDetailMatchAdapter(this)
@@ -54,9 +56,15 @@ class DetailMatchActivity : AppCompatActivity() {
             }
         }.attach()
         binding.viewPagerDetailMatch.offscreenPageLimit = 2
+
+
+//        val frag = getCurrentFragment()
+//         if (frag is MatchStatisticFragment){
+//            frag.getStatistic(idFixture)
+//        }
     }
 
-//    private fun getCurrentFragment() = supportFragmentManager.findFragmentByTag()
+    private fun getCurrentFragment() = supportFragmentManager.findFragmentByTag("f${binding.viewPagerDetailMatch.currentItem}")
 
     private fun setObserve(){
         viewModel.getListStatistic().observe(this){

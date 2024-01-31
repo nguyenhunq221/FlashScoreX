@@ -32,6 +32,11 @@ class MatchStatisticFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[MatchStatisticViewModel::class.java]
+        arguments?.let {
+            val idFixture = it.getInt("idFixture",0)
+            Log.e("hung99", "idFixture: " + idFixture )
+            viewModel.getStatistic(idFixture)
+        }
         _binding = FragmentMatchStatisticBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -44,11 +49,11 @@ class MatchStatisticFragment : BaseFragment() {
 
     override fun initView() {
             val bundle = this.arguments
-            var idFixture = bundle?.getInt("idFixture")
-            Log.e(TAG, "idFixture: " + idFixture )
-            if (idFixture != null){
-            viewModel.getStatistic(idFixture)
-        }
+
+    }
+
+    fun getStatistic(idFixture: Int){
+        viewModel.getStatistic(idFixture)
     }
 
     private fun getListStatistic(mListTeamA:List<Statistic>, mListTeamB:List<Statistic>){
