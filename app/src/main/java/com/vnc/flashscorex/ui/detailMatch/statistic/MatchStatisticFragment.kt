@@ -32,11 +32,14 @@ class MatchStatisticFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[MatchStatisticViewModel::class.java]
-        arguments?.let {
+        val bundle = this.arguments
+
+        bundle?.let {
             val idFixture = it.getInt("idFixture",0)
             Log.e("hung99", "idFixture: " + idFixture )
             viewModel.getStatistic(idFixture)
         }
+
         _binding = FragmentMatchStatisticBinding.inflate(inflater,container,false)
         return binding.root
     }

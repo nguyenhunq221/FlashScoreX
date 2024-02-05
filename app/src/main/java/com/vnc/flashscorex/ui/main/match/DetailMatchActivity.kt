@@ -39,11 +39,11 @@ class DetailMatchActivity : AppCompatActivity() {
 
 
 
-        val fragment = MatchStatisticFragment()
-        val bundle = Bundle().apply {
-            putInt("idFixture", idFixture)
-        }
-        fragment.arguments = bundle
+//        val fragment = MatchStatisticFragment()
+//        val bundle = Bundle().apply {
+//            putInt("idFixture", idFixture)
+//        }
+//        fragment.arguments = bundle
 
         val myViewpager = ViewPagerDetailMatchAdapter(this)
         binding.viewPagerDetailMatch.adapter = myViewpager
@@ -56,6 +56,8 @@ class DetailMatchActivity : AppCompatActivity() {
             }
         }.attach()
         binding.viewPagerDetailMatch.offscreenPageLimit = 2
+
+        myViewpager.setDataStatistic(idFixture)
 
 
 //        val frag = getCurrentFragment()

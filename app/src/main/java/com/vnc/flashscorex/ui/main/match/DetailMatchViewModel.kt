@@ -1,6 +1,7 @@
 package com.vnc.flashscorex.ui.main.match
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -46,6 +47,7 @@ class DetailMatchViewModel(application: Application) : AndroidViewModel(applicat
     fun getGoal(id:Int){
         viewModelScope.launch {
             try {
+                Log.e("hung99", "getStatistic1: " + ApiClient.apiService.getStatistic(Config.key,id).body()?.response?.size )
                 listGoal.postValue(ApiClient.apiService.getEvent(Config.key,id,Constants.KEY.TYPE_EVENT).body()?.listGoal)
             }catch (e:Exception){
                 errorMessage.postValue(e.message)
