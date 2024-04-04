@@ -47,7 +47,6 @@ class DetailMatchViewModel(application: Application) : AndroidViewModel(applicat
     fun getGoal(id:Int){
         viewModelScope.launch {
             try {
-                Log.e("hung99", "getStatistic1: " + ApiClient.apiService.getStatistic(Config.key,id).body()?.response?.size )
                 listGoal.postValue(ApiClient.apiService.getEvent(Config.key,id,Constants.KEY.TYPE_EVENT).body()?.listGoal)
             }catch (e:Exception){
                 errorMessage.postValue(e.message)

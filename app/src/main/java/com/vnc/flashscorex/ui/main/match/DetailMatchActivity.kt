@@ -15,8 +15,6 @@ import com.vnc.flashscorex.adapter.ViewPagerDetailMatchAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.ActivityDetailMatchBinding
 import com.vnc.flashscorex.model.event.GoalModel
-import com.vnc.flashscorex.model.statistic.Statistic
-import com.vnc.flashscorex.ui.detailMatch.statistic.MatchStatisticFragment
 
 class DetailMatchActivity : AppCompatActivity() {
     private lateinit var binding:ActivityDetailMatchBinding
@@ -37,14 +35,6 @@ class DetailMatchActivity : AppCompatActivity() {
         viewModel.getStatistic(idFixture)
         viewModel.getGoal(idFixture)
 
-
-
-//        val fragment = MatchStatisticFragment()
-//        val bundle = Bundle().apply {
-//            putInt("idFixture", idFixture)
-//        }
-//        fragment.arguments = bundle
-
         val myViewpager = ViewPagerDetailMatchAdapter(this)
         binding.viewPagerDetailMatch.adapter = myViewpager
         TabLayoutMediator(binding.tabLayoutDetailMatch, binding.viewPagerDetailMatch) { tab, position ->
@@ -58,19 +48,12 @@ class DetailMatchActivity : AppCompatActivity() {
         binding.viewPagerDetailMatch.offscreenPageLimit = 2
 
         myViewpager.setDataStatistic(idFixture)
-
-
-//        val frag = getCurrentFragment()
-//         if (frag is MatchStatisticFragment){
-//            frag.getStatistic(idFixture)
-//        }
     }
 
     private fun getCurrentFragment() = supportFragmentManager.findFragmentByTag("f${binding.viewPagerDetailMatch.currentItem}")
 
     private fun setObserve(){
         viewModel.getListStatistic().observe(this){
-//            getListStatistic(it[0].statistics,it[1].statistics)
             loadLogo(it[0].team.logo,binding.logoTeamA)
             loadLogo(it[1].team.logo,binding.logoTeamB)
             var idTeamA = it[0].team.id
@@ -81,12 +64,6 @@ class DetailMatchActivity : AppCompatActivity() {
             }
         }
 
-    }
-
-    private fun getListStatistic(mListTeamA:List<Statistic>,mListTeamB:List<Statistic>){
-//        adapter = DetailMatchAdapter(mListTeamA,mListTeamB,this)
-//        binding.rcvStatistic.adapter = adapter
-//        adapter.notifyDataSetChanged()
     }
 
     private fun getListGoal(mList:List<GoalModel>, idTeamA:Int,idTeamB:Int){

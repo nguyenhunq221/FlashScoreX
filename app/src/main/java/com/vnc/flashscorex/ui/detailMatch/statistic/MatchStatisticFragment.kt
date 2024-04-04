@@ -10,6 +10,7 @@ import com.vnc.flashscorex.adapter.DetailMatchAdapter
 import com.vnc.flashscorex.adapter.GoalAdapter
 import com.vnc.flashscorex.adapter.GoalTeamBAdapter
 import com.vnc.flashscorex.base.BaseFragment
+import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchStatisticBinding
 import com.vnc.flashscorex.model.statistic.Statistic
 
@@ -35,8 +36,8 @@ class MatchStatisticFragment : BaseFragment() {
         val bundle = this.arguments
 
         bundle?.let {
-            val idFixture = it.getInt("idFixture",0)
-            Log.e("hung99", "idFixture: " + idFixture )
+            val idFixture = it.getInt(Constants.PUTDATA.ID_FIXTURE,0)
+            Log.e(TAG, "idFixture: " + idFixture )
             viewModel.getStatistic(idFixture)
         }
 
@@ -46,7 +47,9 @@ class MatchStatisticFragment : BaseFragment() {
 
     override fun setObserver() {
         viewModel.getListStatistic().observe(this){
-            getListStatistic(it[0].statistics,it[1].statistics)
+            if (it.isNotEmpty()){
+                getListStatistic(it[0].statistics,it[1].statistics)
+            }
         }
     }
 

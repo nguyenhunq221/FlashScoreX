@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.gson.Gson
+import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.ui.detailMatch.statistic.MatchStatisticFragment
 import com.vnc.flashscorex.ui.player.MatchEventFragment
 import com.vnc.flashscorex.ui.player.MatchLineUpFragment
@@ -31,7 +32,7 @@ class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity ): Fragment
             0 -> {
                 val matchStatisticFragment = MatchStatisticFragment()
                 val bundle = Bundle()
-                idFixture?.let { bundle.putInt("idFixture", it) }
+                idFixture?.let { bundle.putInt(Constants.PUTDATA.ID_FIXTURE, it) }
                 matchStatisticFragment.arguments = bundle
                 return matchStatisticFragment
             }

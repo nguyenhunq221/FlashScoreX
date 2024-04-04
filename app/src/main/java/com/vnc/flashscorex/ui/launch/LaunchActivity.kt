@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.vnc.flashscorex.R
 import com.vnc.flashscorex.databinding.ActivityLaunchBinding
 import com.vnc.flashscorex.ui.dashboard.DashBoardActivity
@@ -17,18 +18,19 @@ class LaunchActivity : AppCompatActivity() {
     private lateinit var binding:ActivityLaunchBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        installSplashScreen()
+        installSplashScreen()
         binding = ActivityLaunchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         window.statusBarColor = ContextCompat.getColor(this, R.color.status_splash)
+        startActivity(Intent(this,DashBoardActivity::class.java))
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            val options = ActivityOptions.makeSceneTransitionAnimation(this)
-            val intent = Intent(this,DashBoardActivity::class.java)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            val options = ActivityOptions.makeSceneTransitionAnimation(this)
+//            val intent = Intent(this,DashBoardActivity::class.java)
 //            startActivity(intent,options.toBundle())
-            startActivity(intent)
-        }, 1000)
+//            startActivity(intent)
+//        }, 1000)
 
     }
 }

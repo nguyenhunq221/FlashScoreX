@@ -19,6 +19,7 @@ object Constants {
 
     object PUTDATA {
         const val DETAIL_PLAYER = "Detail player"
+        const val ID_FIXTURE = "idFixture"
     }
 
     object API {
