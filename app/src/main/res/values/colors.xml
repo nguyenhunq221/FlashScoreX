@@ -6,6 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+    <color name="red">#EE0033</color>
     <color name="white">#FFFFFFFF</color>
     <color name="card_view">#02101B</color>
     <color name="tab_layout">#252323</color>
@@ -13,6 +14,6 @@
     <color name="back_ground_progressBarA">#6BC403</color>
     <color name="back_ground_progressBarB">#0197DB</color>
     <color name="text_secondary">#4B4C4D</color>
-    <color name="status_splash">#ec71ff</color>
+    <color name="status_splash">#FFFFFF</color>
     <color name="status_detail_match">#272a39</color>
 </resources>

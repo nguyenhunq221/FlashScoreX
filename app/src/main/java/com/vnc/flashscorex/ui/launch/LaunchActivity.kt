@@ -18,19 +18,20 @@ class LaunchActivity : AppCompatActivity() {
     private lateinit var binding:ActivityLaunchBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+//        installSplashScreen()
         binding = ActivityLaunchBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.status_splash)
-        startActivity(Intent(this,DashBoardActivity::class.java))
+//        startActivity(Intent(this,DashBoardActivity::class.java))
 
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            val options = ActivityOptions.makeSceneTransitionAnimation(this)
-//            val intent = Intent(this,DashBoardActivity::class.java)
-//            startActivity(intent,options.toBundle())
-//            startActivity(intent)
-//        }, 1000)
+        Handler(Looper.getMainLooper()).postDelayed({
+            val options = ActivityOptions.makeSceneTransitionAnimation(this)
+            val intent = Intent(this,DashBoardActivity::class.java)
+            startActivity(intent,options.toBundle())
+            startActivity(intent)
+        }, 4000)
 
     }
 }
