@@ -33,7 +33,7 @@ class MatchStatisticViewModel(application: Application) : AndroidViewModel(appli
     fun getStatistic (id:Int){
         viewModelScope.launch {
             try {
-                listStatistic .postValue(ApiClient.apiService.getStatistic(Config.key,id).body()?.response)
+                listStatistic.postValue(ApiClient.apiService.getStatistic(Config.key,id).body()?.response)
             }catch (e:Exception){
                 errorMessage.postValue(e.message)
             }
