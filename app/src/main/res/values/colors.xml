@@ -16,4 +16,5 @@
     <color name="text_secondary">#4B4C4D</color>
     <color name="status_splash">#FFFFFF</color>
     <color name="status_detail_match">#272a39</color>
+    <color name="color_text_splash">#EDAD4E</color>
 </resources>
