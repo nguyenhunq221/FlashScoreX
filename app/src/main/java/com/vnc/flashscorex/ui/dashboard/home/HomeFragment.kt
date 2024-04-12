@@ -17,7 +17,7 @@ import com.vnc.flashscorex.ui.main.LeagueActivity
 class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClickListener {
 
     private var bannerList:ArrayList<Int> = ArrayList()
-    private  var _binding:FragmentHomeBinding? = null
+    private var _binding:FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {

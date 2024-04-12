@@ -41,6 +41,7 @@
             android:layout_height="@dimen/_90sdp"
             android:layout_marginTop="@dimen/_17sdp"
             android:src="@drawable/ngoai_hang_anh"
+            android:background="@drawable/bg_click_ripple"
             app:layout_constraintEnd_toStartOf="@+id/laliga"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/slider" />
@@ -51,6 +52,7 @@
             android:layout_height="@dimen/_90sdp"
             android:layout_marginTop="@dimen/_17sdp"
             android:src="@drawable/laliga"
+            android:background="@drawable/bg_click_ripple"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/PremierLeague"
             app:layout_constraintTop_toBottomOf="@+id/slider" />
@@ -61,6 +63,7 @@
             android:layout_height="@dimen/_90sdp"
             android:layout_marginTop="@dimen/_13sdp"
             android:src="@drawable/ic_bundesliga"
+            android:background="@drawable/bg_click_ripple"
             app:layout_constraintEnd_toStartOf="@+id/seria_card"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/PremierLeague" />
@@ -80,6 +83,7 @@
                 android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_80sdp"
                 android:layout_marginTop="@dimen/_13sdp"
+                android:background="@drawable/bg_click_ripple"
                 android:scaleType="centerCrop"
                 android:src="@drawable/seria" />
         </androidx.cardview.widget.CardView>
@@ -103,6 +107,7 @@
                 android:id="@+id/league1"
                 android:layout_width="@dimen/_90sdp"
                 android:layout_height="@dimen/_90sdp"
+                android:background="@drawable/bg_click_ripple"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_league_one" />
         </com.google.android.material.card.MaterialCardView>
@@ -125,6 +130,7 @@
             <ImageView
                 android:id="@+id/more"
                 android:layout_width="90dp"
+                android:background="@drawable/bg_click_ripple"
                 android:layout_height="90dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/more" />

@@ -4,12 +4,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.gson.Gson
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.ui.detailMatch.statistic.MatchStatisticFragment
-import com.vnc.flashscorex.ui.player.MatchEventFragment
-import com.vnc.flashscorex.ui.player.MatchLineUpFragment
-import com.vnc.flashscorex.ui.player.PlayerStatisticFragment
+import com.vnc.flashscorex.ui.detailMatch.matchEvent.MatchEventFragment
+import com.vnc.flashscorex.ui.detailMatch.lineUp.MatchLineUpFragment
+import com.vnc.flashscorex.ui.detailMatch.matchPlayerStatistic.PlayerStatisticFragment
 
 
 class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity ): FragmentStateAdapter(fragmentActivity) {

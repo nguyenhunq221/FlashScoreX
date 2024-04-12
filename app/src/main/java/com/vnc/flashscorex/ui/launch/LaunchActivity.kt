@@ -31,7 +31,7 @@ class LaunchActivity : AppCompatActivity() {
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent,options.toBundle())
             startActivity(intent)
-        }, 2000)
+        }, 800)
 
         setUpView()
 
