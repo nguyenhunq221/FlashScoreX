@@ -54,8 +54,7 @@ class MatchStatisticFragment : BaseFragment() {
     }
 
     override fun initView() {
-            val bundle = this.arguments
-
+        val bundle = this.arguments
     }
 
     fun getStatistic(idFixture: Int){
