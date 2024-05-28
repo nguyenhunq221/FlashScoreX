@@ -3,6 +3,7 @@
 	<img src="https://github.com/nguyenhunq221/FlashScoreX/assets/93783581/df9cc00f-871e-4334-ae0a-533d3ca485aa">
 </div>
 ## About this app ✨️
+
 - Login, Regist account
 - Browsing Home,Search many stories
 - Reading manny comic, novel, stories
@@ -10,7 +11,9 @@
 - Like and follow stories
 - Read stories both online and offline
 - And many more!
+
 ## Screenshots ✨️
+
 <p align="center">  
   <img src="https://github.com/nguyenhunq221/FlashScoreX/assets/93783581/df9cc00f-871e-4334-ae0a-533d3ca485aa" /> 
 </p>
