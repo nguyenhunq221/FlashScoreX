@@ -2,6 +2,7 @@ package com.vnc.flashscorex.api
 
 import com.vnc.flashscorex.model.event.EventModel
 import com.vnc.flashscorex.model.fixture.FixtureModel
+import com.vnc.flashscorex.model.lineup.LineUpModel
 import com.vnc.flashscorex.model.round.RoundModel
 import com.vnc.flashscorex.model.standing.StandingModel
 import com.vnc.flashscorex.model.statistic.StatisticModel
@@ -64,5 +65,11 @@ interface ApiService {
         @Query("fixture") id: Int,
         @Query("type") type: String
     ): Response<EventModel>
+
+    @GET(ApiPath.LineUps)
+    suspend fun getLineUp(
+        @Header("x-rapidapi-key") header: String,
+        @Query("fixture") id: Int,
+    ): Response<LineUpModel>
 
 }
