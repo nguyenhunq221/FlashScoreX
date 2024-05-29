@@ -69,7 +69,7 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
             //use retrofit with response type with coroutines
             Log.e("hung", "thread==: " + Thread.currentThread().name)
             try {
-                listMatch.postValue(ApiClient.apiService.getFixture(Config.key, id, season, Config.time_zone,round,status).body()!!.response)
+                listMatch.postValue(ApiClient.apiService.getFixture(Config.key, id, season, Config.TIME_ZONE,round,status).body()?.response)
             }catch (e:Exception){
                 errorMessage.postValue(e.message.toString())
             }
@@ -79,7 +79,7 @@ class MatchViewModel(application: Application) : AndroidViewModel(application) {
     fun getRound(id:Int,season:Int){
         viewModelScope.launch {
             try {
-                listRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()!!.listRound)
+                listRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.listRound)
 //                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.errors?.get(0)?.access.toString())
 //                errorRound.postValue(ApiClient.apiService.getRound(Config.key,id,season).body()?.errors?.get(0)?.requests.toString())
             }catch (e:Exception){

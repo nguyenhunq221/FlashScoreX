@@ -14,28 +14,28 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface ApiService {
-    @GET(ApiPath.Standings)
+    @GET(ApiPath.STANDINGS)
     fun getStandings(
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
         @Query("season") season: Int
     ): Call<StandingModel>
 
-    @GET(ApiPath.TopScore)
+    @GET(ApiPath.TOP_SCORE)
     fun getTopScore(
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
         @Query("season") season: Int
     ): Call<TopScoreModel>
 
-    @GET(ApiPath.TopAssist)
+    @GET(ApiPath.TOP_ASSIST)
     fun getTopAssist(
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
         @Query("season") season: Int
     ): Call<TopScoreModel>
 
-    @GET(ApiPath.Fixture)
+    @GET(ApiPath.FIXTURE)
     suspend fun getFixture(
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
@@ -45,7 +45,7 @@ interface ApiService {
         @Query("status") status: String? = null
     ): Response<FixtureModel>
 
-    @GET(ApiPath.Round)
+    @GET(ApiPath.ROUND)
     suspend fun getRound(
         @Header("x-rapidapi-key") header: String,
         @Query("league") id: Int,
@@ -53,20 +53,20 @@ interface ApiService {
         @Query("current") current: Boolean? = null
     ): Response<RoundModel>
 
-    @GET(ApiPath.Statistic)
+    @GET(ApiPath.STATISTIC)
     suspend fun getStatistic(
         @Header("x-rapidapi-key") header: String,
         @Query("fixture") id: Int
     ): Response<StatisticModel>
 
-    @GET(ApiPath.Event)
+    @GET(ApiPath.EVENT)
     suspend fun getEvent(
         @Header("x-rapidapi-key") header: String,
         @Query("fixture") id: Int,
         @Query("type") type: String
     ): Response<EventModel>
 
-    @GET(ApiPath.LineUps)
+    @GET(ApiPath.LINE_UP)
     suspend fun getLineUp(
         @Header("x-rapidapi-key") header: String,
         @Query("fixture") id: Int,
