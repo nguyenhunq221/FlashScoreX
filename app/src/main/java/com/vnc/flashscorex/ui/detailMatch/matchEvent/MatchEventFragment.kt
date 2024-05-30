@@ -57,6 +57,8 @@ class MatchEventFragment : BaseFragment() {
                     listMinutest.add(it[i].time.minuteGoal)
                     listEvent.add(it[i].type.toString())
                 }
+                Log.e(TAG, "listEvent: " + listEvent )
+                Log.e(TAG, "listMinutest: " + listMinutest )
                 eventLine.setData(listEvent,listMinutest)
             }
         }

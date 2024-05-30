@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import com.vnc.flashscorex.model.event.GoalModel
 
@@ -21,10 +22,10 @@ class EventLine @JvmOverloads constructor(
 
     private var y: Float = 0.0f
 
-    private var listEvent = listOf<String>()
-    private var listMinute = listOf<Int>()
+    private var listEvent = ArrayList<String>()
+    private var listMinute = ArrayList<Int>()
 
-    fun setData(listEvent: List<String>, listMinute: List<Int>){
+    fun setData(listEvent: ArrayList<String>, listMinute: ArrayList<Int>){
         this.listEvent = listEvent
         this.listMinute = listMinute
     }
@@ -49,8 +50,6 @@ class EventLine @JvmOverloads constructor(
         style = Paint.Style.STROKE
         strokeWidth = 4f
     }
-//    val minutes = listOf(10, 20, 30, 45, 60, 75, 90)
-//    val events = listOf("Event 1", "Event 2", "Event 3", "Halftime", "Event 4", "Event 5", "Match End")
 
     private val circleRadius = 25f
 
@@ -67,7 +66,10 @@ class EventLine @JvmOverloads constructor(
         canvas.drawLine(startX, startY, startX, endY, linePaint)
     }
 
-    private fun displayEventsVertical(canvas: Canvas, minutes: List<Int>, events: List<String>) {
+    private fun displayEventsVertical(canvas: Canvas, minutes: ArrayList<Int>, events: ArrayList<String>) {
+        Log.e("hung99", "minutes: "+ minutes )
+        Log.e("hung99", "events: "+ events )
+
         if (minutes.size != events.size) return
 
         val startY = 10f

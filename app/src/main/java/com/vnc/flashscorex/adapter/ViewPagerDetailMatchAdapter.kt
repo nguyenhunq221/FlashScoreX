@@ -39,7 +39,7 @@ class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity) :
                 val bundle = Bundle()
                 idFixture?.let { bundle.putInt(Constants.PUTDATA.ID_FIXTURE, it) }
                 matchEventFragment.arguments = bundle
-                return MatchEventFragment()
+                return matchEventFragment
             }
 
             2 -> {
@@ -47,7 +47,7 @@ class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity) :
                 val bundle = Bundle()
                 idFixture?.let { bundle.putInt(Constants.PUTDATA.ID_FIXTURE, it) }
                 matchLineUpFragment.arguments = bundle
-                return MatchLineUpFragment()
+                return matchLineUpFragment
             }
 
             3 -> return PlayerStatisticFragment()
