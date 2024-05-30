@@ -10,5 +10,9 @@ data class GoalModel (
     @SerializedName("assist")
     val assist: Assist,
     @SerializedName("time")
-    val time: Time
+    val time: Time,
+    @SerializedName("type")
+    val type: String ?= null,
+    @SerializedName("detail")
+    val detail: String ?= null
 )

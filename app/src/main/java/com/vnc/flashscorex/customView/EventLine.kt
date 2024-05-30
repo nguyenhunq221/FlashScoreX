@@ -1,6 +1,5 @@
 package com.vnc.flashscorex.customView
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
@@ -8,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
+import com.vnc.flashscorex.model.event.GoalModel
 
 class EventLine @JvmOverloads constructor(
     context: Context,
@@ -21,9 +21,22 @@ class EventLine @JvmOverloads constructor(
 
     private var y: Float = 0.0f
 
+    private var listEvent = listOf<String>()
+    private var listMinute = listOf<Int>()
+
+    fun setData(listEvent: List<String>, listMinute: List<Int>){
+        this.listEvent = listEvent
+        this.listMinute = listMinute
+    }
+
     private val textPaint = Paint().apply {
         color = Color.BLACK
         textSize = 25f
+    }
+
+    private val textPaintEvent = Paint().apply {
+        color = Color.BLACK
+        textSize = 35f
     }
 
     private val circlePaint = Paint().apply {
@@ -36,25 +49,15 @@ class EventLine @JvmOverloads constructor(
         style = Paint.Style.STROKE
         strokeWidth = 4f
     }
-
+//    val minutes = listOf(10, 20, 30, 45, 60, 75, 90)
+//    val events = listOf("Event 1", "Event 2", "Event 3", "Halftime", "Event 4", "Event 5", "Match End")
 
     private val circleRadius = 25f
-
-    private var minutes :List<Int> ?= null
-    private var events :List<String> ?= null
-
-     fun setMinutes(minutes: List<Int>) {
-        this.minutes = minutes
-    }
-
-     fun setEvents(events: List<String>) {
-        this.events = events
-    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawLineVertical(canvas)
-        displayEventsVertical(canvas, minutes!!, events!!)
+        displayEventsVertical(canvas, listMinute, listEvent)
     }
 
     private fun drawLineVertical(canvas: Canvas) {
@@ -92,7 +95,7 @@ class EventLine @JvmOverloads constructor(
             canvas.drawCircle(x, y, circleRadius, circlePaint)
             canvas.drawText(minutes[i].toString(), x - textWidth / 2, textBaselineY - 10, textPaint) // Center text on circle
             // Draw event text below circle
-            canvas.drawText(events[i], x + 40, y+5, textPaint)
+            canvas.drawText(events[i], x + 40, y+15, textPaintEvent)
         }
     }
 }

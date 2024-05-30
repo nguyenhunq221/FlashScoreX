@@ -33,8 +33,8 @@ class MatchStatisticFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[MatchStatisticViewModel::class.java]
-        val bundle = this.arguments
 
+        val bundle = this.arguments
         bundle?.let {
             val idFixture = it.getInt(Constants.PUTDATA.ID_FIXTURE,0)
             Log.e(TAG, "idFixture: " + idFixture )

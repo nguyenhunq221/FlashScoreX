@@ -63,7 +63,7 @@ interface ApiService {
     suspend fun getEvent(
         @Header("x-rapidapi-key") header: String,
         @Query("fixture") id: Int,
-        @Query("type") type: String
+        @Query("type") type: String ?= null
     ): Response<EventModel>
 
     @GET(ApiPath.LINE_UP)

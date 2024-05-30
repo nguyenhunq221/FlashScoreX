@@ -11,14 +11,12 @@ import com.vnc.flashscorex.ui.detailMatch.lineUp.MatchLineUpFragment
 import com.vnc.flashscorex.ui.detailMatch.matchPlayerStatistic.PlayerStatisticFragment
 
 
-class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity ): FragmentStateAdapter(fragmentActivity) {
+class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
 
-    private var idFixture :Int? = null
-    private lateinit var matchEventFragment: MatchEventFragment
-    private lateinit var matchLineUpFragment : MatchLineUpFragment
-    private lateinit var playerStatisticFragment : PlayerStatisticFragment
+    private var idFixture: Int? = null
 
-    fun setDataStatistic (idFixture: Int){
+    fun setDataStatistic(idFixture: Int) {
         this.idFixture = idFixture
     }
 
@@ -35,7 +33,15 @@ class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity ): Fragment
                 matchStatisticFragment.arguments = bundle
                 return matchStatisticFragment
             }
-            1 -> return MatchEventFragment()
+
+            1 -> {
+                val matchEventFragment = MatchEventFragment()
+                val bundle = Bundle()
+                idFixture?.let { bundle.putInt(Constants.PUTDATA.ID_FIXTURE, it) }
+                matchEventFragment.arguments = bundle
+                return MatchEventFragment()
+            }
+
             2 -> {
                 val matchLineUpFragment = MatchLineUpFragment()
                 val bundle = Bundle()
@@ -43,6 +49,7 @@ class ViewPagerDetailMatchAdapter(fragmentActivity: FragmentActivity ): Fragment
                 matchLineUpFragment.arguments = bundle
                 return MatchLineUpFragment()
             }
+
             3 -> return PlayerStatisticFragment()
 
             else -> return MatchStatisticFragment()

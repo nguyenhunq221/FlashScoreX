@@ -1,19 +1,24 @@
 package com.vnc.flashscorex.ui.detailMatch.matchEvent
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.vnc.flashscorex.R
+import com.vnc.flashscorex.base.BaseFragment
+import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.customView.EventLine
 import com.vnc.flashscorex.databinding.FragmentMatchEventBinding
+import com.vnc.flashscorex.ui.detailMatch.statistic.MatchStatisticFragment
 
-class MatchEventFragment : Fragment() {
+class MatchEventFragment : BaseFragment() {
 
     private var _binding: FragmentMatchEventBinding? = null
-    private lateinit var eventLine: EventLine
+    private lateinit var listMinutest: ArrayList<Int>
+    private lateinit var listEvent: ArrayList<String>
     private val binding get() = _binding!!
     private lateinit var viewModel: MatchEventViewModel
     companion object {
@@ -30,17 +35,36 @@ class MatchEventFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel = ViewModelProvider(this)[MatchEventViewModel::class.java]
+
+        val bundle = this.arguments
+        bundle?.let {
+            val idFixture = it.getInt(Constants.PUTDATA.ID_FIXTURE,0)
+            Log.e(TAG, "idFixture: " + idFixture)
+            viewModel.getEvent(idFixture)
+        }
+
         _binding = FragmentMatchEventBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val minutes = listOf(10, 20, 30, 45, 60, 75, 90)
-        val events = listOf("Event 1", "Event 2", "Event 3", "Halftime", "Event 4", "Event 5", "Match End")
-        eventLine = EventLine(requireActivity())
-        eventLine.setMinutes(minutes)
-        eventLine.setEvents(events)
+    override fun setObserver() {
+        val eventLine = EventLine(requireActivity())
+        listMinutest = ArrayList()
+        listEvent = ArrayList()
+        viewModel.getListEvent().observe(viewLifecycleOwner){
+            if (it.isNotEmpty()){
+                for ( i in it.indices){
+                    listMinutest.add(it[i].time.minuteGoal)
+                    listEvent.add(it[i].type.toString())
+                }
+                eventLine.setData(listEvent,listMinutest)
+            }
+        }
+
+    }
+
+    override fun initView() {
+
     }
 
     override fun onDestroy() {
