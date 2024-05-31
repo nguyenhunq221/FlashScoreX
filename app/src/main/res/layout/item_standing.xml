@@ -15,6 +15,7 @@
         android:minHeight="@dimen/_40sdp"
         android:orientation="horizontal"
         android:weightSum="10"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:background="@drawable/bg_gradient"
         android:padding="@dimen/_2sdp">
 

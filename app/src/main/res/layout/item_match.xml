@@ -7,15 +7,14 @@
     android:layout_height="wrap_content"
     android:layout_margin="9dp"
     android:elevation="@dimen/_4sdp"
-    card_view:cardCornerRadius="8dp"
-    >
+    card_view:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:minHeight="@dimen/_110sdp"
-        android:background="@drawable/bg_gradient"
-        >
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:background="@drawable/bg_gradient">
         <TextView
             android:id="@+id/status_match"
             android:layout_width="wrap_content"

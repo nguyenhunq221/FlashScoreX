@@ -12,6 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:background="@drawable/bg_gradient"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:layout_height="wrap_content">
 
         <de.hdodenhof.circleimageview.CircleImageView
