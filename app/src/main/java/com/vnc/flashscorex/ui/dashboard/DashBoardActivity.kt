@@ -32,8 +32,10 @@ class DashBoardActivity : AppCompatActivity() {
         binding = ActivityDashBoardBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPreferences = PreferenceUtil(this)
-
+        supportActionBar?.hide()
         window.statusBarColor = ContextCompat.getColor(this, R.color.back_ground_main)
+        binding.bottomNavigation.background = null
+        binding.bottomNavigation.menu.getItem(2).isEnabled = false
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment

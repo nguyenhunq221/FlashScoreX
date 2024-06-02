@@ -9,6 +9,9 @@
         android:title="Yêu thích"
         android:icon="@drawable/ic_heart"/>
     <item
+        android:id="@+id/place_holder"
+        android:title="" />
+    <item
         android:id="@+id/predictFragment"
         android:title="Dự đoán"
         android:icon="@drawable/ic_predict"/>
