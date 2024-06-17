@@ -38,7 +38,13 @@ class TopScoreFragment(var idLeague: Int) : Fragment(),TopScoreAdapter.ItemClick
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topScoreViewModel.showListTopScore(idLeague,GetCurrent.getCurrentYear())
+        if (idLeague == 1){
+            topScoreViewModel.showListTopScore(idLeague,2022)
+        }else if (idLeague == 4){
+            topScoreViewModel.showListTopScore(idLeague,2024)
+        }else{
+            topScoreViewModel.showListTopScore(idLeague,GetCurrent.getCurrentYear())
+        }
         setObserve()
     }
 

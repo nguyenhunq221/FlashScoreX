@@ -37,7 +37,13 @@ class TopAssistFragment(var idLeague: Int) : Fragment(),TopAssistAdapter.ItemCli
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topAssistViewModel.showListTopAssist(idLeague, GetCurrent.getCurrentYear())
+        if (idLeague == 1){
+            topAssistViewModel.showListTopAssist(idLeague,2022)
+        }else if (idLeague == 4){
+            topAssistViewModel.showListTopAssist(idLeague,2024)
+        }else{
+            topAssistViewModel.showListTopAssist(idLeague, GetCurrent.getCurrentYear())
+        }
         setObserve()
     }
 

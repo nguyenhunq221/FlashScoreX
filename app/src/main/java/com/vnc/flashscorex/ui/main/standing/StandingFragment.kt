@@ -37,7 +37,7 @@ class StandingFragment(var idLeague: Int) : Fragment() {
         if (idLeague == 1 ){
             viewModel.showStandings(idLeague, 2022)
         }else if (idLeague == 4){
-            viewModel.showStandings(idLeague, 2020)
+            viewModel.showStandings(idLeague, 2024)
         }else{
             viewModel.showStandings(idLeague, GetCurrent.getCurrentYear())
         }

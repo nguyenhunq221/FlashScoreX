@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.MatchAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentMatchBinding
@@ -40,8 +41,16 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setObserve()
-        matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())
-        matchViewModel.getRound(idLeague,GetCurrent.getCurrentYear())
+        if (idLeague == 4){
+            matchViewModel.showMatch(idLeague, 2024)
+            matchViewModel.getRound(idLeague,2024)
+        }else if (idLeague == 1){
+            matchViewModel.showMatch(idLeague, 2022)
+            matchViewModel.getRound(idLeague,2022)
+        }else {
+            matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())
+            matchViewModel.getRound(idLeague,GetCurrent.getCurrentYear())
+        }
         setUpView()
     }
 
@@ -53,9 +62,9 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
             Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
         }
 
-//        matchViewModel.getListRoundError().observe(viewLifecycleOwner){
-//            Toast.makeText(requireActivity(), it, Toast.LENGTH_SHORT).show()
-//        }
+        matchViewModel.getListRoundError().observe(viewLifecycleOwner){
+            Toast.makeText(requireActivity(), getString(R.string.call_api_fail_default), Toast.LENGTH_SHORT).show()
+        }
 
         matchViewModel.getListRound().observe(viewLifecycleOwner){
             getRound(it)
@@ -72,18 +81,36 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
                 if (isFirstSelection) {
                     isFirstSelection = false
                 }else{
-                    matchViewModel.showMatch(idLeague,GetCurrent.getCurrentYear(),parent?.getItemAtPosition(position).toString(),null)
+                    if (idLeague == 4){
+                        matchViewModel.showMatch(idLeague, 2024,null,StatusMatch.NS.toString())
+                    }else if (idLeague == 1){
+                        matchViewModel.showMatch(idLeague, 2022,null,StatusMatch.NS.toString())
+                    }else {
+                        matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),parent?.getItemAtPosition(position).toString())
+                    }
                 }
             }
 
         }
 
         binding.notStart.setOnClickListener{
-            matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())
+            if (idLeague == 4){
+                matchViewModel.showMatch(idLeague, 2024,null,StatusMatch.NS.toString())
+            }else if (idLeague == 1){
+                matchViewModel.showMatch(idLeague, 2022,null,StatusMatch.NS.toString())
+            }else {
+                matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())
+            }
         }
 
         binding.swiperefresh.setOnRefreshListener {
-            matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,null)
+            if (idLeague == 4){
+                matchViewModel.showMatch(idLeague, 2024)
+            }else if (idLeague == 1){
+                matchViewModel.showMatch(idLeague, 2022)
+            }else {
+                matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())
+            }
         }
     }
 

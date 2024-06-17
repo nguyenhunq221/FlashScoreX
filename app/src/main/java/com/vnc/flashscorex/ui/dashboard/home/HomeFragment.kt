@@ -24,7 +24,7 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
         super.onCreate(savedInstanceState)
         bannerList.add(R.drawable.ic_champion_league)
         bannerList.add(R.drawable.ic_europaleague)
-        bannerList.add(R.drawable.euro)
+        bannerList.add(R.drawable.euro_2024)
         bannerList.add(R.drawable.quata)
     }
     override fun onCreateView(
