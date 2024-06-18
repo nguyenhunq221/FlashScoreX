@@ -62,8 +62,7 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
     }
 
     override fun onClick(v: View?) {
-        when(v!!.id){
-
+        when(v?.id){
             R.id.PremierLeague -> {
                 val intent = Intent(requireActivity(),LeagueActivity::class.java)
                 intent.putExtra(Constants.KEY.LEAGUE_TITLE,getString(R.string.premier_league_title))

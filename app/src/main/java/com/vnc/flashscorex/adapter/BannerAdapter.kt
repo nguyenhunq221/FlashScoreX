@@ -18,7 +18,7 @@ class BannerAdapter(var context:Context,var images:List<Int>) : SliderViewAdapte
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?): SliderViewHolder {
-        val binding:ItemBannerBinding = ItemBannerBinding.inflate(LayoutInflater.from(parent!!.context),parent,false)
+        val binding:ItemBannerBinding = ItemBannerBinding.inflate(LayoutInflater.from(parent?.context),parent,false)
         return SliderViewHolder(binding)
     }
 

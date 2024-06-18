@@ -64,7 +64,6 @@ class DetailMatchActivity : AppCompatActivity() {
                 getListGoal(list,idTeamA,idTeamB)
             }
         }
-
     }
 
     private fun getListGoal(mList:List<GoalModel>, idTeamA:Int,idTeamB:Int){
