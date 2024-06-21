@@ -3,6 +3,7 @@ package com.vnc.flashscorex.api
 import com.vnc.flashscorex.model.event.EventModel
 import com.vnc.flashscorex.model.fixture.FixtureModel
 import com.vnc.flashscorex.model.lineup.LineUpModel
+import com.vnc.flashscorex.model.playerStatistic.PlayerStatisticModelResponse
 import com.vnc.flashscorex.model.round.RoundModel
 import com.vnc.flashscorex.model.standing.StandingModel
 import com.vnc.flashscorex.model.statistic.StatisticModel
@@ -71,5 +72,11 @@ interface ApiService {
         @Header("x-rapidapi-key") header: String,
         @Query("fixture") id: Int,
     ): Response<LineUpModel>
+
+    @GET(ApiPath.PLAYER_STATISTIC)
+    suspend fun getPlayerStatistic(
+        @Header("x-rapidapi-key") header: String,
+        @Query("fixture") id: Int,
+    ): Response<PlayerStatisticModelResponse>
 
 }
