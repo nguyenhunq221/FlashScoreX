@@ -20,6 +20,8 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
     private var _binding:FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    //test commit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bannerList.add(R.drawable.ic_champion_league)
@@ -27,6 +29,7 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
         bannerList.add(R.drawable.euro_2024)
         bannerList.add(R.drawable.quata)
     }
+    // test 2
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
