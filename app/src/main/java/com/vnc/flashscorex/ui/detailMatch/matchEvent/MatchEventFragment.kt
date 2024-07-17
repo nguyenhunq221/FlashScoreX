@@ -1,18 +1,14 @@
 package com.vnc.flashscorex.ui.detailMatch.matchEvent
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.vnc.flashscorex.R
 import com.vnc.flashscorex.base.BaseFragment
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.customView.EventLine
 import com.vnc.flashscorex.databinding.FragmentMatchEventBinding
-import com.vnc.flashscorex.ui.detailMatch.statistic.MatchStatisticFragment
 
 class MatchEventFragment : BaseFragment() {
 
@@ -39,7 +35,6 @@ class MatchEventFragment : BaseFragment() {
         val bundle = this.arguments
         bundle?.let {
             val idFixture = it.getInt(Constants.PUTDATA.ID_FIXTURE,0)
-            Log.e(TAG, "idFixture: " + idFixture)
             viewModel.getEvent(idFixture)
         }
 
@@ -57,8 +52,6 @@ class MatchEventFragment : BaseFragment() {
                     listMinutest.add(it[i].time.minuteGoal)
                     listEvent.add(it[i].type.toString())
                 }
-                Log.e(TAG, "listEvent: " + listEvent )
-                Log.e(TAG, "listMinutest: " + listMinutest )
                 eventLine.setData(listEvent,listMinutest)
             }
         }

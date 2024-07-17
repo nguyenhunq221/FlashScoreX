@@ -6,9 +6,11 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import com.vnc.flashscorex.model.event.GoalModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class EventLine @JvmOverloads constructor(
     context: Context,
@@ -56,7 +58,9 @@ class EventLine @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawLineVertical(canvas)
-        displayEventsVertical(canvas, listMinute, listEvent)
+       GlobalScope.launch(Dispatchers.Main) {
+            displayEventsVertical(canvas, listMinute, listEvent)
+        }
     }
 
     private fun drawLineVertical(canvas: Canvas) {
@@ -67,8 +71,6 @@ class EventLine @JvmOverloads constructor(
     }
 
     private fun displayEventsVertical(canvas: Canvas, minutes: ArrayList<Int>, events: ArrayList<String>) {
-        Log.e("hung99", "minutes: "+ minutes )
-        Log.e("hung99", "events: "+ events )
 
         if (minutes.size != events.size) return
 
@@ -85,7 +87,6 @@ class EventLine @JvmOverloads constructor(
             } else{
                  y = startY + (minutes[i] * length) / 90 - 25
             }
-
             // Draw minute number in the center of the circle
             textPaint.textSize = 20f // Adjust text size for minutes
             textPaint.typeface = Typeface.DEFAULT_BOLD // Make minutes text bold
