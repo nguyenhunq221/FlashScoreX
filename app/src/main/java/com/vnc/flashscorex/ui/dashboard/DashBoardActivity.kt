@@ -4,11 +4,13 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -26,6 +28,7 @@ class DashBoardActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var sharedPreferences:PreferenceUtil
     private var doubleBackToExitPressedOnce:Boolean = false
+    private val CAMERA_PERMISSION_REQUEST_CODE  = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +43,10 @@ class DashBoardActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), CAMERA_PERMISSION_REQUEST_CODE)
+        }
 
 
 //        val mNavigationItemSelected = object : NavigationBarView.OnItemSelectedListener {
@@ -87,6 +94,20 @@ class DashBoardActivity : AppCompatActivity() {
 //        binding.bottomNavigation.apply {
 //            setOnItemSelectedListener(mNavigationItemSelected)
 //        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == CAMERA_PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Quyền truy cập vào camera đã được cấp
+                Toast.makeText(this, "Quyền truy cập vào camera đã được cấp!", Toast.LENGTH_SHORT).show()
+            } else {
+                // Quyền truy cập không được cấp, có thể hiển thị thông báo khác hoặc yêu cầu lại quyền
+                Toast.makeText(this, "Không cấp quyền truy cập vào camera!", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
