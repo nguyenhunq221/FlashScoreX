@@ -17,8 +17,7 @@ class FavoritePlayerAdapter(var mList: List<Player>, var context: Context) :
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoritePlayerViewHolder {
-        val binding =
-            ItemFavorPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemFavorPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FavoritePlayerViewHolder(binding)
     }
 

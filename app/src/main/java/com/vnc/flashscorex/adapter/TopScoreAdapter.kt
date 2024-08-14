@@ -18,8 +18,7 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) :
 
     private var listener: ItemClickListener? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopScoreViewHolder {
-        val binding: ItemPlayerBinding =
-            ItemPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TopScoreViewHolder(binding)
     }
 
@@ -47,11 +46,10 @@ class TopScoreAdapter(var mList: List<ResponseDetail>, var context: Context) :
             .into(holder.binding.imgLogoClub)
         holder.binding.cardView.setOnLongClickListener {
 
-            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-            builder
-                .setMessage(context.getString(R.string.add_to_favor))
-                .setTitle(context.getString(R.string.notice))
-                .setPositiveButton(context.getString(R.string.accept)) { _, _ ->
+            val builder = AlertDialog.Builder(context)
+            builder.setMessage(context.getString(R.string.add_to_favor))
+                   .setTitle(context.getString(R.string.notice))
+                   .setPositiveButton(context.getString(R.string.accept)) { _, _ ->
                     listener?.onClickLikePlayer(mList[position].player)
                     true
                 }

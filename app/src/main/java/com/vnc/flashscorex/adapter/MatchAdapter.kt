@@ -18,8 +18,7 @@ class MatchAdapter(var mList: List<ResponseDetail>, var context: Context) :
     class MatchViewHolder(val binding: ItemMatchBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
-        val binding: ItemMatchBinding =
-            ItemMatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemMatchBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MatchViewHolder(binding)
     }
 

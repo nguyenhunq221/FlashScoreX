@@ -78,7 +78,6 @@ class DetailMatchAdapter(var mListTeamA:List<Statistic>,var mListTeamB:List<Stat
             holder.binding.statisticName.text = context.getString(R.string.expect_goal)
         }
 
-
         //set max for progress bar
         if (statisticTeamA.value != null && statisticTeamB.value!= null && statisticTeamA.value.isDigitsOnly() && statisticTeamB.value.isDigitsOnly() ){
             if (statisticTeamA.value.toInt() > statisticTeamB.value.toInt()){

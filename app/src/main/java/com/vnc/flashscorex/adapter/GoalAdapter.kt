@@ -12,8 +12,7 @@ class GoalAdapter(var context: Context, var mList: List<GoalModel>) :
     class GoalViewHolder(val binding: ItemGoalBinding) : RecyclerView.ViewHolder(binding.root) {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GoalViewHolder {
-        val binding: ItemGoalBinding =
-            ItemGoalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemGoalBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return GoalViewHolder(binding)
     }
 

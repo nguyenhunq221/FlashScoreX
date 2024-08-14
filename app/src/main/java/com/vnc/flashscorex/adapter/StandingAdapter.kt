@@ -13,7 +13,7 @@ class StandingAdapter(var mList:List<StandingDetail>,  var context: Context) : R
     class StandingViewHolder( val binding: ItemStandingBinding) : RecyclerView.ViewHolder(binding.root){}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StandingViewHolder {
-        val binding: ItemStandingBinding = ItemStandingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding = ItemStandingBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return StandingViewHolder(binding)
     }
 

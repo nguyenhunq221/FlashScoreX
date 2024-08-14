@@ -16,8 +16,7 @@ class TopAssistAdapter(var mList: List<ResponseDetail>, var context: Context) :
     private var listener: ItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopAssistViewHolder {
-        val binding: ItemPlayerBinding =
-            ItemPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemPlayerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TopAssistViewHolder(binding)
     }
 
