@@ -57,4 +57,61 @@ class NewsFragment : Fragment() {
                 }
             }
     }
+
+
+    // using rxjava
+//    fun main() {
+//        val list = listOf("apple", "banana", "orange", "grape")
+//
+//        val observable = Observable.fromIterable(list)
+//
+//        observable
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(Schedulers.single())
+//            .subscribe { fruit ->
+//                println("Received: $fruit")
+//            }
+//    }
+
+
+//    mInteractor.getProvinceDistrictCommune(UserModel.loadData(getViewContext()).getToken(), code,
+//    new CommonCallback<ProvinceResult>(getViewContext()){
+//        @Override
+//        protected void onSuccess(Call<ProvinceResult> call, Response<ProvinceResult> response) {
+//            super.onSuccess(call, response);
+//            Observable.fromIterable(response.body().getData())
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .toSortedList(new Comparator<ProvinceModel>() {
+//                    @Override
+//                    public int compare(ProvinceModel o1, ProvinceModel o2) {
+//                        Collator collator = Collator.getInstance(new Locale("vi"));
+//                        return collator.compare(o1.getName(), o2.getName());
+//                    }
+//                })
+//                .subscribe(new SingleObserver<List<ProvinceModel>>() {
+//                    @Override
+//                    public void onSubscribe(Disposable d) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(List<ProvinceModel> provinceModels) {
+//                        showDataAfterSort((ArrayList<ProvinceModel>) provinceModels, typeProvincesDistrictsCommunes);
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//                });
+//        }
+//
+//        @Override
+//        protected void onError(Call<ProvinceResult> call) {
+//            super.onError(call);
+//
+//            Toast.showToast(getViewContext(), R.string.error_fail_default);
+//        }
+//    });
 }
