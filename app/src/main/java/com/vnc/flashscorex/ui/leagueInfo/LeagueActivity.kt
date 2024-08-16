@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main
+package com.vnc.flashscorex.ui.leagueInfo
 
 import android.os.Bundle
 import androidx.core.content.ContextCompat

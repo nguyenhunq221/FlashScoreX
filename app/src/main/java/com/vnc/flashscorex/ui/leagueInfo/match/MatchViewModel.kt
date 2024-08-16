@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.match
+package com.vnc.flashscorex.ui.leagueInfo.match
 
 import android.app.Application
 import android.util.Log
@@ -8,15 +8,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.vnc.flashscorex.api.ApiClient
 import com.vnc.flashscorex.constant.Config
-import com.vnc.flashscorex.constant.Constants
-import com.vnc.flashscorex.model.fixture.FixtureModel
 import com.vnc.flashscorex.model.fixture.ResponseDetail
-import com.vnc.flashscorex.model.round.RoundModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MatchViewModel(application: Application) : AndroidViewModel(application) {
 

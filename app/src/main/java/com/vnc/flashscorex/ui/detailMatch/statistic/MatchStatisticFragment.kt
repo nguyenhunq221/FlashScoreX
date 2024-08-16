@@ -71,5 +71,4 @@ class MatchStatisticFragment : BaseFragment() {
         super.onDestroy()
         _binding = null
     }
-
 }

@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.match
+package com.vnc.flashscorex.ui.leagueInfo.match
 
 import android.content.Intent
 import android.os.Bundle
@@ -21,8 +21,10 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     private var _binding: FragmentMatchBinding? = null
     private lateinit var matchAdapter: MatchAdapter
     private lateinit var matchViewModel: MatchViewModel
-    private val TAG = "MatchFragment"
     private val binding get() = _binding!!
+    companion object {
+        private const val TAG = "MatchFragment"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +36,6 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     ): View? {
         matchViewModel = ViewModelProvider(this)[MatchViewModel::class.java]
         _binding = FragmentMatchBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -114,15 +115,15 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
         }
     }
 
-    private fun getStanding(mList: List<ResponseDetail>) {
+    private fun getStanding(mList: List<ResponseDetail>) = with(binding) {
         if(mList.isEmpty()){
-            binding.shimmerFrameLayout.startShimmer()
+            shimmerFrameLayout.startShimmer()
         }else{
-            binding.shimmerFrameLayout.stopShimmer()
-            binding.shimmerFrameLayout.visibility = View.GONE
+            shimmerFrameLayout.stopShimmer()
+            shimmerFrameLayout.visibility = View.GONE
             matchAdapter = MatchAdapter(mList, requireActivity())
-            matchAdapter.setClickListener(this)
-            binding.rcvMatch.adapter = matchAdapter
+            matchAdapter.setClickListener(this@MatchFragment)
+            rcvMatch.adapter = matchAdapter
         }
     }
 

@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.match
+package com.vnc.flashscorex.ui.leagueInfo.match
 
 enum class StatusMatch {
     NS,

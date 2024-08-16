@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.topscore
+package com.vnc.flashscorex.ui.leagueInfo.topscore
 
 import android.content.Intent
 import android.os.Bundle

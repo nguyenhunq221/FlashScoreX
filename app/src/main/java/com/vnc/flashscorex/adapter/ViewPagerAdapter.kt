@@ -3,10 +3,10 @@ package com.vnc.flashscorex.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.vnc.flashscorex.ui.main.match.MatchFragment
-import com.vnc.flashscorex.ui.main.standing.StandingFragment
-import com.vnc.flashscorex.ui.main.topassist.TopAssistFragment
-import com.vnc.flashscorex.ui.main.topscore.TopScoreFragment
+import com.vnc.flashscorex.ui.leagueInfo.match.MatchFragment
+import com.vnc.flashscorex.ui.leagueInfo.standing.StandingFragment
+import com.vnc.flashscorex.ui.leagueInfo.topassist.TopAssistFragment
+import com.vnc.flashscorex.ui.leagueInfo.topscore.TopScoreFragment
 
 class ViewPagerAdapter(fragmentActivity: FragmentActivity, var idLeague:Int ): FragmentStateAdapter(fragmentActivity) {
 

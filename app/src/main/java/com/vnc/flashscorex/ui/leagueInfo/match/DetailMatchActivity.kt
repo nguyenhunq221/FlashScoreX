@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.match
+package com.vnc.flashscorex.ui.leagueInfo.match
 
 import android.os.Bundle
 import android.widget.ImageView

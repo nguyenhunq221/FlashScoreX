@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.topassist
+package com.vnc.flashscorex.ui.leagueInfo.topassist
 
 import android.content.Intent
 import android.os.Bundle

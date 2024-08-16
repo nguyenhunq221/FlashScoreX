@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.match
+package com.vnc.flashscorex.ui.leagueInfo.match
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -18,7 +18,6 @@ class DetailMatchViewModel(application: Application) : AndroidViewModel(applicat
 
     private var listStatistic = MutableLiveData<List<ResponseDetail>>()
     private var listGoal = MutableLiveData<List<GoalModel>>()
-
     private var errorMessage = MutableLiveData<String>()
 
     fun getListStatistic() : LiveData<List<ResponseDetail>>{

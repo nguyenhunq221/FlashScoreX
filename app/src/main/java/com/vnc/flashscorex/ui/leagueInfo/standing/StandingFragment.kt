@@ -1,4 +1,4 @@
-package com.vnc.flashscorex.ui.main.standing
+package com.vnc.flashscorex.ui.leagueInfo.standing
 
 import android.os.Bundle
 import android.view.LayoutInflater

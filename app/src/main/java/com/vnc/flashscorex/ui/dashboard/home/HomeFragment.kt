@@ -2,7 +2,6 @@ package com.vnc.flashscorex.ui.dashboard.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +11,13 @@ import com.vnc.flashscorex.R
 import com.vnc.flashscorex.adapter.BannerAdapter
 import com.vnc.flashscorex.constant.Constants
 import com.vnc.flashscorex.databinding.FragmentHomeBinding
-import com.vnc.flashscorex.ui.main.LeagueActivity
+import com.vnc.flashscorex.ui.leagueInfo.LeagueActivity
 
 class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClickListener {
 
     private var bannerList:ArrayList<Int> = ArrayList()
     private var _binding:FragmentHomeBinding? = null
     private val binding get() = _binding!!
-
-    //test commit
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +26,6 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
         bannerList.add(R.drawable.euro_2024)
         bannerList.add(R.drawable.quata)
     }
-    // test 2
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,13 +36,10 @@ class HomeFragment : Fragment(),View.OnClickListener,BannerAdapter.ItemSlideClic
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setUpView()
-
     }
 
     private fun setUpView() = with(binding){
-
         var adapter = BannerAdapter(requireContext(),bannerList)
         slider.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
         slider.setSliderAdapter(adapter)
