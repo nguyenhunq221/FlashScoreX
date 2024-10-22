@@ -12,7 +12,7 @@ import com.vnc.flashscorex.databinding.FragmentStandingBinding
 import com.vnc.flashscorex.model.standing.StandingDetail
 import com.vnc.flashscorex.utils.GetCurrent
 
-class StandingFragment(var idLeague: Int) : Fragment() {
+class StandingFragment(private var idLeague: Int) : Fragment() {
     private  var _binding: FragmentStandingBinding? = null
     private lateinit var viewModel: StandingViewModel
     private lateinit var adapterParentStanding:StandingParentAdapter
@@ -25,7 +25,7 @@ class StandingFragment(var idLeague: Int) : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         viewModel = ViewModelProvider(this)[StandingViewModel::class.java]
         _binding = FragmentStandingBinding.inflate(inflater, container, false)
         return binding.root
@@ -34,12 +34,16 @@ class StandingFragment(var idLeague: Int) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (idLeague == 1 ){
-            viewModel.showStandings(idLeague, 2022)
-        }else if (idLeague == 4){
-            viewModel.showStandings(idLeague, 2024)
-        }else{
-            viewModel.showStandings(idLeague, GetCurrent.getCurrentYear())
+        when (idLeague) {
+            1 -> {
+                viewModel.showStandings(idLeague, 2022)
+            }
+            4 -> {
+                viewModel.showStandings(idLeague, 2024)
+            }
+            else -> {
+                viewModel.showStandings(idLeague, GetCurrent.getCurrentYear())
+            }
         }
 
         setObserve()
@@ -65,5 +69,4 @@ class StandingFragment(var idLeague: Int) : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 }
