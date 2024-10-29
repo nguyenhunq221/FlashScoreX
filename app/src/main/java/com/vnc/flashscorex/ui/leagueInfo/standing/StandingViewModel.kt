@@ -29,7 +29,7 @@ class StandingViewModel(application: Application) : AndroidViewModel(application
         return errorMessage
     }
 
-    fun showStandings(id: Int, season: Int) = viewModelScope.launch{
+    fun showStandings(id: Int, season: Int) = viewModelScope.launch {
         ApiClient.apiService.getStandings(Config.key, id, season)
             .enqueue(object : Callback<StandingModel> {
                 override fun onResponse(call: Call<StandingModel>, response: Response<StandingModel>) {

@@ -26,6 +26,11 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
         private const val TAG = "MatchFragment"
     }
 
+    enum class League(val id:Int, val leagueName:String){
+        UEFA_EURO(4,"euro"),
+        WORLD_CUP(1,"world cup")
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -33,7 +38,7 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         matchViewModel = ViewModelProvider(this)[MatchViewModel::class.java]
         _binding = FragmentMatchBinding.inflate(inflater, container, false)
         return binding.root
@@ -42,10 +47,10 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setObserve()
-        if (idLeague == 4){
+        if (idLeague == League.UEFA_EURO.id){
             matchViewModel.showMatch(idLeague, 2024)
             matchViewModel.getRound(idLeague,2024)
-        }else if (idLeague == 1){
+        }else if (idLeague == League.WORLD_CUP.id){
             matchViewModel.showMatch(idLeague, 2022)
             matchViewModel.getRound(idLeague,2022)
         }else {
@@ -82,9 +87,9 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
                 if (isFirstSelection) {
                     isFirstSelection = false
                 }else{
-                    if (idLeague == 4){
+                    if (idLeague == League.UEFA_EURO.id){
                         matchViewModel.showMatch(idLeague, 2024,null,StatusMatch.NS.toString())
-                    }else if (idLeague == 1){
+                    }else if (idLeague == League.WORLD_CUP.id){
                         matchViewModel.showMatch(idLeague, 2022,null,StatusMatch.NS.toString())
                     }else {
                         matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),parent?.getItemAtPosition(position).toString())
@@ -95,9 +100,9 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
         }
 
         binding.notStart.setOnClickListener{
-            if (idLeague == 4){
+            if (idLeague == League.UEFA_EURO.id){
                 matchViewModel.showMatch(idLeague, 2024,null,StatusMatch.NS.toString())
-            }else if (idLeague == 1){
+            }else if (idLeague == League.WORLD_CUP.id){
                 matchViewModel.showMatch(idLeague, 2022,null,StatusMatch.NS.toString())
             }else {
                 matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear(),null,StatusMatch.NS.toString())
@@ -105,9 +110,9 @@ class MatchFragment(var idLeague: Int) : Fragment(),MatchAdapter.ItemClickListen
         }
 
         binding.swiperefresh.setOnRefreshListener {
-            if (idLeague == 4){
+            if (idLeague == League.UEFA_EURO.id){
                 matchViewModel.showMatch(idLeague, 2024)
-            }else if (idLeague == 1){
+            }else if (idLeague == League.WORLD_CUP.id){
                 matchViewModel.showMatch(idLeague, 2022)
             }else {
                 matchViewModel.showMatch(idLeague, GetCurrent.getCurrentYear())

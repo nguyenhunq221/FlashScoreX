@@ -56,10 +56,8 @@
         </LinearLayout>
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-
     <androidx.appcompat.widget.AppCompatSpinner
         android:id="@+id/spinner_round"
-        style="@style/SpinnerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_5sdp"
