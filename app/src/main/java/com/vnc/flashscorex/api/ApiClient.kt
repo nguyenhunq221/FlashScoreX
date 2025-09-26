@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ApiClient {
-    private val baseUrl = Config.BASE_URL
+    private const val DOMAIN_FOOTBALL = Config.BASE_URL
     private fun getClient() : OkHttpClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -25,7 +25,7 @@ object ApiClient {
 
     private val retrofit by lazy {
         Retrofit.Builder()
-            .baseUrl(baseUrl)
+            .baseUrl(DOMAIN_FOOTBALL)
             .client(getClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
